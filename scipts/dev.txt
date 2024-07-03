@@ -1,0 +1,7 @@
+docker
+docker-compose
+docker-desktop
+go
+minikube
+kubectl
+
