@@ -94,7 +94,7 @@ alias ......="cd ../../../../.."
 # Git
 alias gc="git commit -m"
 alias gca="git commit -a -m"
-alias gp="git push origin HEAD"
+alias gp="git push origin "
 alias gpu="git pull origin"
 alias gst="git status"
 alias glog="git log --graph --topo-order --pretty='%w(100,0,6)%C(yellow)%h%C(bold)%C(black)%d %C(cyan)%ar %C(green)%an%n%C(bold)%C(white)%s %N' --abbrev-commit"
