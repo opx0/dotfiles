@@ -1,8 +1,9 @@
 require("obsidian").setup({
   workspaces = {
     {
-      name = "Notes",
-      path = "/Users/omerxx/Obsidian/Notes",
+      name = "DevLogs",
+      --path = "/Users/Obsidian/Notes",
+      path = "/home/aura/PARA/Archives/DevLogs"
     },
   },
 })
