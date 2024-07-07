@@ -78,8 +78,63 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
 # Aliases
 alias ls='ls --color'
-alias vim='nvim'
-alias c='clear'
+#alias vim='nvim'
+alias cl='clear'
+alias la=tree
+alias cat=bat
+
+
+# Dirs
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias ......="cd ../../../../.."
+
+# Git
+alias gc="git commit -m"
+alias gca="git commit -a -m"
+alias gp="git push origin HEAD"
+alias gpu="git pull origin"
+alias gst="git status"
+alias glog="git log --graph --topo-order --pretty='%w(100,0,6)%C(yellow)%h%C(bold)%C(black)%d %C(cyan)%ar %C(green)%an%n%C(bold)%C(white)%s %N' --abbrev-commit"
+alias gdiff="git diff"
+alias gco="git checkout"
+alias gb='git branch'
+alias gba='git branch -a'
+alias gadd='git add'
+alias ga='git add -p'
+alias gcoall='git checkout -- .'
+alias gr='git remote'
+alias gre='git reset'
+
+# Eza
+alias l="eza -l --icons --git -a"
+alias lt="eza --tree --level=2 --long --icons --git"
+
+
+function ranger {
+	local IFS=$'\t\n'
+	local tempfile="$(mktemp -t tmp.XXXXXX)"
+	local ranger_cmd=(
+		command
+		ranger
+		--cmd="map Q chain shell echo %d > "$tempfile"; quitall"
+	)
+
+	${ranger_cmd[@]} "$@"
+	if [[ -f "$tempfile" ]] && [[ "$(cat -- "$tempfile")" != "$(echo -n `pwd`)" ]]; then
+		cd -- "$(cat "$tempfile")" || return
+	fi
+	command rm -f -- "$tempfile" 2>/dev/null
+}
+alias rr='ranger'
+
+# navigation
+cx() { cd "$@" && l; }
+fcd() { cd "$(find . -type d -not -path '*/.*' | fzf)" && l; }
+f() { echo "$(find . -type f -not -path '*/.*' | fzf)" | pbcopy }
+fv() { nvim "$(find . -type f -not -path '*/.*' | fzf)" }
 
 # Shell integrations
 eval "$(fzf --zsh)"
