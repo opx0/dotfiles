@@ -40,3 +40,8 @@ zsh-autosuggestions
 zsh-syntax-highlighting
 sxhkd
 fastfetch
+fzf
+yazi
+auto-cpufreq
+cpupower
+tlp
