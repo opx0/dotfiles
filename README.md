@@ -6,13 +6,13 @@ This directory contains the dotfiles for my system
 Ensure you have the following installed on your system
 ### Git
 
-```shell
+```sh
 pacman -S git
 ```
 
 ### Stow
 
-```shell
+```sh
 pacman -S stow
 ```
 
@@ -20,14 +20,25 @@ pacman -S stow
 
 First, check out the dotfiles repo in your $HOME directory using git
 
-```shell
-$ git clone https://github.com/aura-zero/dotfiles.git
-$ cd dotfiles
+```sh
+git clone https://github.com/aura-zero/dotfiles.git
+cd dotfiles
 ```
 
 then use GNU stow to create symlinks
 
-```shell
-$ stow .
+```sh
+stow .
+```
+**if incounter some error in `stow .` then run**
+```sh
+stow --adopt .
+```
+
+## System Setup with usefull packages
+Installation of packages for development and general purpose use
+```sh
+cd dotfiles/scripts
+bash install.sh
 ```
 
