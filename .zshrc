@@ -149,3 +149,7 @@ eval "$(zoxide init --cmd cd zsh)"
 [[ -f /home/aura/.dart-cli-completion/zsh-config.zsh ]] && . /home/aura/.dart-cli-completion/zsh-config.zsh || true
 ## [/Completion]
 
+
+. "$HOME/.atuin/bin/env"
+
+eval "$(atuin init zsh)"
