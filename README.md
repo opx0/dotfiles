@@ -41,4 +41,9 @@ Installation of packages for development and general purpose use
 cd dotfiles/scripts
 bash install.sh
 ```
+## Making your shell magical with atuin
+Sync, search and backup shell history with Atuin
+```sh
+curl --proto '=https' --tlsv1.2 -LsSf https://setup.atuin.sh | sh
+```
 

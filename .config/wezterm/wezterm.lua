@@ -1,4 +1,5 @@
 local wezterm = require 'wezterm'
+local gpus = wezterm.gui.enumerate_gpus()
 --
 --if os.getenv("XDG_CURRENT_DESKTOP") == "Hyprland" then
 --	config.enable_wayland = false
@@ -6,16 +7,12 @@ local wezterm = require 'wezterm'
 --	config.enable_wayland = true
 --end
 return {
-
 	enable_wayland = false,
 	-- color_scheme = 'termnial.sexy',
 	color_scheme = 'Catppuccin Mocha',
 	enable_tab_bar = false,
 	font_size = 13.0,
 	font = wezterm.font('JetBrains Mono'),
-	-- macos_window_background_blur = 40,
-	macos_window_background_blur = 30,
-	
 	-- window_background_image = '/Users/omerhamerman/Downloads/3840x1080-Wallpaper-041.jpg',
 	-- window_background_image_hsb = {
 	-- 	brightness = 0.01,
@@ -42,4 +39,6 @@ return {
 	    action = wezterm.action.OpenLinkAtMouseCursor,
 	  },
 	},
+	-- Spawn a tmux  in login mode
+	default_prog = { 'tmux','-l' },
 }
