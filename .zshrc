@@ -151,5 +151,4 @@ eval "$(zoxide init --cmd cd zsh)"
 
 
 . "$HOME/.atuin/bin/env"
-
 eval "$(atuin init zsh)"
