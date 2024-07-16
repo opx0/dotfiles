@@ -134,6 +134,8 @@ alias rr='ranger'
 ## aother cool rustbased file manager inside terminal
 alias fs='yazi'
 
+## tmux
+alias ta='tmux attach'
 # navigation
 cx() { cd "$@" && l; }
 fcd() { cd "$(find . -type d -not -path '*/.*' | fzf)" && l; }
