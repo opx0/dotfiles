@@ -40,5 +40,5 @@ return {
 	  },
 	},
 	-- Spawn a tmux  in login mode
-	default_prog = { 'tmux','-l' },
+	--default_prog = { "tmux",'-l'} --big flaw:> creating new session but it should attach 
 }

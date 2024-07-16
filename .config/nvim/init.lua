@@ -1,10 +1,10 @@
 require('keymaps')
 require('plugins.lazy')
---require('plugins.misc')
+require('plugins.misc')
 require('plugins.lualine')
 require('options')
---require('misc')
---require('plugins.dap')
+require('misc')
+require('plugins.dap')
 require('plugins.gitsigns')
 require('plugins.tele')
 require('plugins.treesitter')
@@ -16,4 +16,4 @@ require('plugins.neogit')
 require('plugins.codesnap')
 require('plugins.harpoon')
 
--- vim: ts=8 sts=2 sw=2 et
+--vim: ts=8 sts=2 sw=2 et
