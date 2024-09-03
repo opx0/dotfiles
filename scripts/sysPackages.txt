@@ -1,0 +1,4 @@
+ttf-jetbrains-mono-nerd
+brightnessctl
+gvfs
+thunar-valman

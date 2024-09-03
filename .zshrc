@@ -57,7 +57,7 @@ bindkey '^n' history-search-forward
 bindkey '^[w' kill-region
 
 # History and igore duplicate 
-HISTSIZE=5000
+HISTSIZE=10000
 HISTFILE=~/.zsh_history
 SAVEHIST=$HISTSIZE
 HISTDUP=erase

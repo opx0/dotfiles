@@ -12,7 +12,7 @@ return {
 	color_scheme = 'Catppuccin Mocha',
 	enable_tab_bar = false,
 	font_size = 13.0,
-	font = wezterm.font('JetBrains Mono'),
+	font = wezterm.font('JetBrainsMono Nerd Font'),
 	-- window_background_image = '/Users/omerhamerman/Downloads/3840x1080-Wallpaper-041.jpg',
 	-- window_background_image_hsb = {
 	-- 	brightness = 0.01,

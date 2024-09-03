@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define the path to the text file containing package names (an array)
-PACKAGE_FILES=("packages.txt" "dev.txt")
+PACKAGE_FILES=("packages.txt" "dev.txt" "sysPackages.txt")
 
 # Iterate through each file in the array
 for PACKAGE_FILE in "${PACKAGE_FILES[@]}"; do

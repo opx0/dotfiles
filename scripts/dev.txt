@@ -2,10 +2,10 @@ visual-studio-code-bin
 google-chrome
 docker
 docker-compose
-docker-desktop
 go
 minikube
 kubectl
 postman-bin
 mongodb-compass
-
+brave
+wezterm
