@@ -3,7 +3,7 @@ require("obsidian").setup({
     {
       name = "DevLogs",
       --path = "/Users/Obsidian/Notes",
-      path = "/home/aura/PARA/Archives/DevLogs"
+      path = "/home/aura/Archives/DevLogs"
     },
   },
 })

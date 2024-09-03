@@ -42,6 +42,9 @@ sxhkd
 fastfetch
 fzf
 yazi
-auto-cpufreq
-cpupower
-tlp
+#auto-cpufreq
+#cpupower
+#tlp
+stow
+battop
+laptop-mode-tools
