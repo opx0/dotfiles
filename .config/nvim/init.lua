@@ -16,4 +16,5 @@ require('plugins.neogit')
 require('plugins.codesnap')
 require('plugins.harpoon')
 
---vim: ts=8 sts=2 sw=2 et
+--vim: ts=2 sts=2 sw=2 et
+
