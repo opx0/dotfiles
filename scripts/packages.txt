@@ -1,3 +1,5 @@
+yarn
+npm
 automake
 bash
 bash-completion
@@ -12,7 +14,7 @@ dust
 exa
 fd
 fzf
-gcalcli
+#gcalcli
 helix
 htop
 jq
@@ -48,3 +50,6 @@ yazi
 stow
 battop
 laptop-mode-tools
+atuin
+bun
+node

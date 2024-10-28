@@ -1,3 +1,5 @@
+bun
+spotify
 visual-studio-code-bin
 google-chrome
 docker
@@ -9,3 +11,4 @@ postman-bin
 mongodb-compass
 brave
 wezterm
+telegram
