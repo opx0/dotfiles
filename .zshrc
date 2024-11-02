@@ -1,9 +1,9 @@
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+# fi
 
 
 
@@ -21,7 +21,7 @@ source "${ZINIT_HOME}/zinit.zsh"
 
 
 # Add in Powerlevel10k
-zinit ice depth=1; zinit light romkatv/powerlevel10k #downlload from git 
+# zinit ice depth=1; zinit light romkatv/powerlevel10k #downlload from git
 
 # Add in zsh plugins > the big THR33 of termainal
 zinit light zsh-users/zsh-syntax-highlighting
@@ -45,10 +45,10 @@ autoload -Uz compinit && compinit
 zinit cdreplay -q
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # INSTANT_PROMPT will not announce itself that i'm enabled
-typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
+# typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 
 # Keybindings
 bindkey -e
@@ -56,7 +56,7 @@ bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 bindkey '^[w' kill-region
 
-# History and igore duplicate 
+# History and igore duplicate
 HISTSIZE=10000
 HISTFILE=~/.zsh_history
 SAVEHIST=$HISTSIZE
@@ -152,5 +152,7 @@ eval "$(zoxide init --cmd cd zsh)"
 ## [/Completion]
 
 
-. "$HOME/.atuin/bin/env"
-eval "$(atuin init zsh)"
+#. "$HOME/.atuin/bin/env"
+eval "$(atuin init zsh --disable-up-arrow)"
+export STARSHIP_CONFIG=~/.config/starship/starship.toml
+eval "$(starship init zsh)"

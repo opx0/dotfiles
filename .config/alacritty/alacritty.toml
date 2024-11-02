@@ -85,7 +85,7 @@ mouse = "Middle"
 [selection]
 semantic_escape_chars = ",│`|:\"' ()[]{}<>"
 
-[shell]
+[terminal.shell]
 program = "/bin/zsh"
 
 [window]
@@ -100,3 +100,5 @@ lines = 80
 [window.padding]
 x = 4
 y = 4
+
+[terminal]

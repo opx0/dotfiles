@@ -12,3 +12,5 @@ mongodb-compass
 brave
 wezterm
 telegram
+alacritty
+zen-browser
