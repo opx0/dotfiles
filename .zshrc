@@ -144,7 +144,7 @@ fv() { nvim "$(find . -type f -not -path '*/.*' | fzf)" }
 
 # Shell integrations
 eval "$(fzf --zsh)"
-eval "$(zoxide init --cmd cd zsh)"
+eval "$(zoxide init --cmd d zsh)"
 
 ## [Completion]
 ## Completion scripts setup. Remove the following line to uninstall
