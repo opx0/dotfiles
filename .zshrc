@@ -156,3 +156,17 @@ eval "$(zoxide init --cmd d zsh)"
 eval "$(atuin init zsh --disable-up-arrow)"
 export STARSHIP_CONFIG=~/.config/starship/starship.toml
 eval "$(starship init zsh)"
+# bun completions
+[ -s "/home/abhi/.bun/_bun" ] && source "/home/abhi/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# pnpm
+export PNPM_HOME="/home/abhi/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
