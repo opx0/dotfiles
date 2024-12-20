@@ -16,7 +16,7 @@
   // positions generated based on config.ctl //
 
   "modules-left": [
-    "custom/padd",
+    // "custom/padd",
     "custom/l_end",
     "cpu",
     "memory",
@@ -53,15 +53,15 @@
     "privacy",
     "tray",
     "battery",
-    "custom/r_end",
-    "custom/l_end",
-    "custom/wallchange",
-    "custom/theme",
-    "custom/wbar",
-    "custom/cliphist",
-    "custom/power",
-    "custom/r_end",
-    "custom/padd"
+    "custom/r_end"
+    // "custom/l_end",
+    // "custom/wallchange",
+    // "custom/theme",
+    // "custom/wbar",
+    // "custom/cliphist",
+    // "custom/power",
+    // "custom/r_end",
+    // "custom/padd"
   ],
 
   // sourced from modules based on config.ctl //
