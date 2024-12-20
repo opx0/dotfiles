@@ -32,7 +32,6 @@ shellcheck
 starship
 the_silver_searcher
 tmux
-watch
 wget
 xh
 yq
@@ -44,12 +43,12 @@ sxhkd
 fastfetch
 fzf
 yazi
-#auto-cpufreq
-#cpupower
+auto-cpufreq
+cpupower
 #tlp
 stow
 battop
 laptop-mode-tools
 atuin
-bun
-node
+bun-bin
+nodejs
