@@ -17,3 +17,4 @@ discord
 alacritty
 zen-browser
 vivaldi
+libreoffice-fresh-en-gb
