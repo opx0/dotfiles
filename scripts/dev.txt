@@ -1,11 +1,10 @@
 obsidian
-bun
+docker-desktop
 spotify-launcher
 visual-studio-code-bin
 google-chrome
 docker
 docker-compose
-docker-desktop
 go
 minikube
 kubectl
