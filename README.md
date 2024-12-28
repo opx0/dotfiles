@@ -59,5 +59,6 @@ curl --proto '=https' --tlsv1.2 -LsSf https://setup.atuin.sh | sh
 > to add symlinks to gitignore
 
 ```zsh
-find . -type l | sed -e s'/^\.\///g' >> .gitignore
+#find . -type l | sed -e s'/^\.\///g' >> .gitignore
+find . -type l -exec git rm --cached {} \;
 ```
