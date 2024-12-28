@@ -1,0 +1,26 @@
+ls
+d .config/nushell/
+cd .config/nushell/
+l
+ls
+open config.nu
+exir
+cl
+mkdir ~/.cache/starship<\n>starship init nu | save -f ~/.cache/starship/init.nu
+use ~/.cache/starship/init.nu
+ls
+exit
+which $0
+which shell
+which $shell
+exit
+mkdir ~/.cache/starship<\n>starship init nu | save -f ~/.cache/starship/init.nu
+use ~/.cache/starship/init.nu
+ls
+exit
+clear
+exit
+nu
+exit
+use ~/.cache/starship/init.nu
+clear
