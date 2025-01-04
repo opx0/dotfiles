@@ -24,3 +24,5 @@ nu
 exit
 use ~/.cache/starship/init.nu
 clear
+exit
+open passwords.csv

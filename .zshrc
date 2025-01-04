@@ -82,7 +82,6 @@ alias vim='nvim'
 alias v='nvim'
 alias cl='clear'
 alias la=tree
-alias cat=bat
 alias op="code ."
 
 # Dirs

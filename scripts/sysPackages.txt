@@ -1,3 +1,6 @@
 ttf-jetbrains-mono-nerd
 brightnessctl
 gvfs
+zsh
+nwg-look
+nushell
