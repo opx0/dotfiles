@@ -1,8 +1,8 @@
 obsidian
 docker-desktop
-spotify-launcher
+#spotify-launcher
 visual-studio-code-bin
-google-chrome
+#google-chrome
 docker
 docker-compose
 go
@@ -18,3 +18,4 @@ alacritty
 zen-browser
 vivaldi
 libreoffice-fresh-en-gb
+localsend-appimage
