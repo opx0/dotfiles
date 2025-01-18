@@ -29,3 +29,5 @@ open passwords.csv
 l
 ls
 exit
+ls
+exit
