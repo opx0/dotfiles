@@ -37,7 +37,7 @@ zinit snippet OMZP::archlinux
 zinit snippet OMZP::aws
 zinit snippet OMZP::kubectl
 zinit snippet OMZP::kubectx
-zinit snippet OMZP::command-not-found
+# zinit snippet OMZP::command-not-found
 
 # Load completions
 autoload -Uz compinit && compinit
@@ -80,7 +80,7 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 alias ls='ls --color'
 alias vim='nvim'
 alias v='nvim'
-alias cl='clear'
+alias cls='clear'
 alias la=tree
 alias op="code ."
 
@@ -134,53 +134,53 @@ alias rr='ranger'
 alias fs='yazi'
 
 # In case a command is not found, try to find the package that has it
-function command_not_found_handler {
-    local purple='\e[1;35m' bright='\e[0;1m' green='\e[1;32m' reset='\e[0m'
-    printf 'zsh: command not found: %s\n' "$1"
-    local entries=( ${(f)"$(/usr/bin/pacman -F --machinereadable -- "/usr/bin/$1")"} )
-    if (( ${#entries[@]} )) ; then
-        printf "${bright}$1${reset} may be found in the following packages:\n"
-        local pkg
-        for entry in "${entries[@]}" ; do
-            local fields=( ${(0)entry} )
-            if [[ "$pkg" != "${fields[2]}" ]]; then
-                printf "${purple}%s/${bright}%s ${green}%s${reset}\n" "${fields[1]}" "${fields[2]}" "${fields[3]}"
-            fi
-            printf '    /%s\n' "${fields[4]}"
-            pkg="${fields[2]}"
-        done
-    fi
-    return 127
-}
+# function command_not_found_handler {
+#     local purple='\e[1;35m' bright='\e[0;1m' green='\e[1;32m' reset='\e[0m'
+#     printf 'zsh: command not found: %s\n' "$1"
+#     local entries=( ${(f)"$(/usr/bin/pacman -F --machinereadable -- "/usr/bin/$1")"} )
+#     if (( ${#entries[@]} )) ; then
+#         printf "${bright}$1${reset} may be found in the following packages:\n"
+#         local pkg
+#         for entry in "${entries[@]}" ; do
+#             local fields=( ${(0)entry} )
+#             if [[ "$pkg" != "${fields[2]}" ]]; then
+#                 printf "${purple}%s/${bright}%s ${green}%s${reset}\n" "${fields[1]}" "${fields[2]}" "${fields[3]}"
+#             fi
+#             printf '    /%s\n' "${fields[4]}"
+#             pkg="${fields[2]}"
+#         done
+#     fi
+#     return 127
+# }
 
 # Detect AUR wrapper
-if pacman -Qi yay &>/dev/null; then
-   aurhelper="yay"
-elif pacman -Qi paru &>/dev/null; then
-   aurhelper="paru"
-fi
+# if pacman -Qi yay &>/dev/null; then
+#    aurhelper="yay"
+# elif pacman -Qi paru &>/dev/null; then
+#    aurhelper="paru"
+# fi
 
-function in {
-    local -a inPkg=("$@")
-    local -a arch=()
-    local -a aur=()
+# function in {
+#     local -a inPkg=("$@")
+#     local -a arch=()
+#     local -a aur=()
 
-    for pkg in "${inPkg[@]}"; do
-        if pacman -Si "${pkg}" &>/dev/null; then
-            arch+=("${pkg}")
-        else
-            aur+=("${pkg}")
-        fi
-    done
+#     for pkg in "${inPkg[@]}"; do
+#         if pacman -Si "${pkg}" &>/dev/null; then
+#             arch+=("${pkg}")
+#         else
+#             aur+=("${pkg}")
+#         fi
+#     done
 
-    if [[ ${#arch[@]} -gt 0 ]]; then
-        sudo pacman -S "${arch[@]}"
-    fi
+#     if [[ ${#arch[@]} -gt 0 ]]; then
+#         sudo pacman -S "${arch[@]}"
+#     fi
 
-    if [[ ${#aur[@]} -gt 0 ]]; then
-        ${aurhelper} -S "${aur[@]}"
-    fi
-}
+#     if [[ ${#aur[@]} -gt 0 ]]; then
+#         ${aurhelper} -S "${aur[@]}"
+#     fi
+# }
 
 ## tmux
 alias ta='tmux attach'
@@ -205,18 +205,18 @@ eval "$(atuin init zsh --disable-up-arrow)"
 export STARSHIP_CONFIG=~/.config/starship/starship.toml
 eval "$(starship init zsh)"
 # bun completions
-[ -s "/home/abhi/.bun/_bun" ] && source "/home/abhi/.bun/_bun"
+# [ -s "/home/abhi/.bun/_bun" ] && source "/home/abhi/.bun/_bun"
 
 # bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
+# export BUN_INSTALL="$HOME/.bun"
+# export PATH="$BUN_INSTALL/bin:$PATH"
 
 # pnpm
-export PNPM_HOME="/home/abhi/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
+# export PNPM_HOME="/home/abhi/.local/share/pnpm"
+# case ":$PATH:" in
+#   *":$PNPM_HOME:"*) ;;
+#   *) export PATH="$PNPM_HOME:$PATH" ;;
+# esac
 # pnpm end
 
 export PATH=$PATH:/home/abhi/.spicetify
