@@ -6,7 +6,7 @@ clipboard-write = allow
 window-theme = system
 window-padding-balance = true
 
-font-size=14
+font-size=13
 
 theme = tokyonight_night
 bold-is-bright = true
