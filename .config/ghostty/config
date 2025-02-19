@@ -1,4 +1,7 @@
-# You can preview the config here
+theme = catppuccin-mocha
+background-blur-radius = 20
+mouse-hide-while-typing = true
+window-decoration = true
 
 confirm-close-surface = false
 clipboard-read = allow
@@ -6,9 +9,8 @@ clipboard-write = allow
 window-theme = system
 window-padding-balance = true
 
-font-size=14
+font-size=13
 
-theme = tokyonight_night
 bold-is-bright = true
 background = #1a1b26
 foreground = #c0caf5
@@ -19,27 +21,7 @@ cursor-text = #1a1b26
 cursor-style = block_hollow
 cursor-style-blink = true
 
-
-palette = 0=#15161e
-palette = 1=#f7768e
-palette = 2=#9ece6a
-palette = 3=#e0af68
-palette = 4=#7aa2f7
-palette = 5=#bb9af7
-palette = 6=#7dcfff
-palette = 7=#a9b1d6
-palette = 8=#414868
-palette = 9=#f7768e
-palette = 10=#9ece6a
-palette = 11=#e0af68
-palette = 12=#7aa2f7
-palette = 13=#bb9af7
-palette = 14=#7dcfff
-palette = 15=#c0caf5
-
-
 mouse-shift-capture = true
 focus-follows-mouse = true
 gtk-titlebar = false
 gtk-wide-tabs = false
-
