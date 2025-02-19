@@ -17,3 +17,6 @@ waybar
 wezterm
 zellij
 zshrc.startship
+tmux/plugins/
+fzf
+history.txt

@@ -4,7 +4,6 @@ docker-desktop
 visual-studio-code-bin
 #google-chrome
 docker
-docker-compose
 go
 minikube
 kubectl
