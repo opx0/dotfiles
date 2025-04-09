@@ -76,6 +76,7 @@ zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
+
 # Aliases
 alias ls='ls --color'
 alias vim='nvim'
@@ -84,7 +85,17 @@ alias cl='clear'
 alias la=tree
 alias op="code ."
 
+#dev
+alias bund="bun run dev"
+alias bunrnd="bun run dev"
+
+# System
+alias fuckoff="shutdown now"
+alias foff="shotdown now"
+alias re="shutdown -r now"
+
 # Dirs
+alias 0="cd ~/"
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
@@ -220,3 +231,5 @@ esac
 # pnpm end
 
 export PATH=$PATH:/home/abhi/.spicetify
+export GOOGLE_API_KEY="AIzaSyCI8YMBO2m6MK8pnfLRMB0ZPl8s0Of70wE"
+export TERM=xterm-256color
