@@ -31,3 +31,6 @@ ls
 exit
 ls
 exit
+clear
+psql -U postgres
+exit
