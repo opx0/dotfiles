@@ -1,12 +1,10 @@
 {
   "workbench.colorTheme": "Aura Dracula Spirit (Soft)",
-  "workbench.activityBar.location": "hidden",
-  "workbench.statusBar.visible": false,
+  "workbench.editor.showTabs": "single",
   "workbench.startupEditor": "none",
   "workbench.tips.enabled": false,
   "editor.minimap.enabled": false,
   "breadcrumbs.enabled": false,
-  "workbench.sideBar.location": "right",
   "workbench.iconTheme": "material-icon-theme",
   "material-icon-theme.hidesExplorerArrows": true,
   "workbench.tree.enableStickyScroll": false,
@@ -16,9 +14,8 @@
   "explorer.confirmDragAndDrop": false,
   "explorer.confirmDelete": false,
   "explorer.decorations.badges": false,
-  "git.decorations.enabled": false,
+  "git.decorations.enabled": true,
   "window.zoomLevel": 1.5,
-  "window.customTitleBarVisibility": "never",
   "window.titleBarStyle": "native",
   "custom-ui-style.electron": {
     "titleBarStyle": "hiddenInset",
@@ -74,9 +71,9 @@
     }
   },
   "editor.fontFamily": "Dank Mono",
-  "editor.fontSize": 14,
+  "editor.fontSize": 15,
   "editor.fontLigatures": true,
-  "editor.lineHeight": 1.5,
+  "editor.lineHeight": 1.4,
   "editor.tokenColorCustomizations": {
     "textMateRules": [
       {
@@ -120,6 +117,11 @@
   "emmet.triggerExpansionOnTab": true,
   "files.autoSave": "afterDelay",
   "update.mode": "none",
-  "extensions.ignoreRecommendations": true,
-  "workbench.editor.showTabs": "single"
+  "augment.showOnStartup": false,
+  "augment.nextEdit.enableGlobalBackgroundSuggestions": true,
+  "workbench.activityBar.location": "hidden",
+  "workbench.sideBar.location": "right",
+  "window.commandCenter": false,
+  "window.customTitleBarVisibility": "never",
+  "window.menuBarVisibility": "toggle"
 }

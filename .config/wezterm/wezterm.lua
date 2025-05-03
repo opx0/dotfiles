@@ -4,10 +4,12 @@ local gpus = wezterm.gui.enumerate_gpus()
 return {
 	enable_wayland = false,
 	adjust_window_size_when_changing_font_size = false,
+  max_fps                     = 120,                                   -- :contentReference[oaicite:1]{index=1}
+
 	-- color_scheme = 'termnial.sexy',
 	color_scheme = 'Catppuccin Mocha',
 	enable_tab_bar = false,
-	font_size = 14.0,
+	font_size = 13.0,
 	font = wezterm.font('JetBrains Mono'),
 	-- macos_window_background_blur = 40,
 	macos_window_background_blur = 30,
