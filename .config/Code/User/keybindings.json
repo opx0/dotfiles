@@ -81,5 +81,17 @@
   { "key": "ctrl+l", "command": "workbench.action.navigateUp", "when": "editorFocus" },
   { "key": "ctrl+;", "command": "workbench.action.navigateRight", "when": "editorFocus" },
   { "key": "ctrl+k", "command": "workbench.action.navigateDown", "when": "editorFocus" },
-  { "key": "ctrl+j", "command": "workbench.action.navigateLeft", "when": "editorFocus" }
+  {
+    "key": "ctrl+j",
+    "command": "workbench.action.navigateLeft",
+    "when": "editorFocus"
+  },
+  {
+    "key": "meta+a",
+    "command": "vscode-augment.next-edit.toggle-panel-horizontal-split"
+  },
+  {
+    "key": "ctrl+l",
+    "command": "-vscode-augment.focusAugmentPanel"
+  }
 ]

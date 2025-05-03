@@ -106,6 +106,7 @@ alias ......="cd ../../../../.."
 alias gc="git commit -m"
 alias gca="git commit -a -m"
 alias gp="git push origin "
+alias gpm="git push origin main"
 alias gpu="git pull origin"
 alias gst="git status"
 alias glog="git log --graph --topo-order --pretty='%w(100,0,6)%C(yellow)%h%C(bold)%C(black)%d %C(cyan)%ar %C(green)%an%n%C(bold)%C(white)%s %N' --abbrev-commit"
@@ -215,6 +216,8 @@ eval "$(zoxide init --cmd z zsh)"
 eval "$(atuin init zsh --disable-up-arrow)"
 export STARSHIP_CONFIG=~/.config/starship/starship.toml
 eval "$(starship init zsh)"
+
+
 # bun completions
 [ -s "/home/abhi/.bun/_bun" ] && source "/home/abhi/.bun/_bun"
 
@@ -233,3 +236,10 @@ esac
 export PATH=$PATH:/home/abhi/.spicetify
 export GOOGLE_API_KEY="AIzaSyCI8YMBO2m6MK8pnfLRMB0ZPl8s0Of70wE"
 export TERM=xterm-256color
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# paths
+export PATH="$HOME/.local/bin:$PATH"

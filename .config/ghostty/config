@@ -10,6 +10,7 @@ window-theme = system
 window-padding-balance = true
 
 font-size=13
+#font-family=Dank Mono
 
 bold-is-bright = true
 background = #1a1b26
