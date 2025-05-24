@@ -13,7 +13,7 @@ nvim.min
 starship
 tmux
 tmux.minimal
-waybar
+# waybar
 wezterm
 zellij
 zshrc.startship

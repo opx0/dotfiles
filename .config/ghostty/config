@@ -1,28 +1,9 @@
 theme = catppuccin-mocha
+font-size = 14
 background-blur-radius = 20
 mouse-hide-while-typing = true
 window-decoration = true
-
-confirm-close-surface = false
-clipboard-read = allow
-clipboard-write = allow
-window-theme = system
-window-padding-balance = true
-
-font-size=13
-#font-family=Dank Mono
-
-bold-is-bright = true
-background = #1a1b26
-foreground = #c0caf5
-selection-background = #283457
-selection-foreground = #c0caf5
-cursor-color = #c0caf5
-cursor-text = #1a1b26
-cursor-style = block_hollow
-cursor-style-blink = true
-
-mouse-shift-capture = true
-focus-follows-mouse = true
-gtk-titlebar = false
-gtk-wide-tabs = false
+# keybind = global:cmd+/=toggle_quick_terminal
+macos-option-as-alt = true
+# background-opacity = 0.7
+# background-blur-radius = 20
