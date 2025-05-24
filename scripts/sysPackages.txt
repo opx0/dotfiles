@@ -3,4 +3,4 @@ brightnessctl
 gvfs
 zsh
 nwg-look
-nushell
+#nushell

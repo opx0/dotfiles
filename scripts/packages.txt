@@ -49,3 +49,10 @@ bun-bin
 nodejs
 envycontrol
 actl
+dotool
+#xdotool
+nil
+nwg-look
+transmission-gtk
+wl-screenrec
+vlc
