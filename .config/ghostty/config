@@ -1,9 +1,12 @@
-theme = catppuccin-mocha
-font-size = 14
+theme = tokyonight
+font-size = 13
 background-blur-radius = 20
+background-opacity = 0.9
 mouse-hide-while-typing = true
-window-decoration = true
-# keybind = global:cmd+/=toggle_quick_terminal
+window-decoration = false
 macos-option-as-alt = true
-# background-opacity = 0.7
-# background-blur-radius = 20
+
+keybind = global:cmd+/=toggle_quick_terminal
+keybind = ctrl+space>n=new_window
+keybind = ctrl+space>t=new_tab
+keybind = ctrl+space>c=close_tab
