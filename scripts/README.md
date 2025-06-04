@@ -11,8 +11,6 @@ This dir contains two files: dev.txt and packages.txt. The dev.txt file lists pa
 ### Installation
 Just run install.sh
 ```sh
-bash install.sh
-#or
 ./install.sh
 ```
 
