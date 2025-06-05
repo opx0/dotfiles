@@ -15,9 +15,6 @@ zinit light Aloxaf/fzf-tab # Fuzzy completion and more
 zinit snippet OMZP::git
 zinit snippet OMZP::sudo
 zinit snippet OMZP::archlinux
-zinit snippet OMZP::aws
-zinit snippet OMZP::kubectl
-zinit snippet OMZP::kubectx
 zinit snippet OMZP::command-not-found
 zinit snippet OMZP::docker
 
@@ -94,6 +91,10 @@ alias gre='git reset'
 alias l="eza -l --icons --git -a"
 alias lt="eza --tree --level=2 --long --icons --git"
 
+#clip
+alias xpwd="pwd | xclip -selection clipboard" # for x11
+alias pwdy="pwd | wl-copy" # for wayland
+
 
 function ranger {
 	local IFS=$'\t\n'
@@ -114,6 +115,7 @@ alias rr='ranger'
 alias fs='yazi'
 
 ## tmux
+alias t='tmux'
 alias ta='tmux attach'
 # navigation
 cx() { cd "$@" && l; }
@@ -156,3 +158,4 @@ export NVM_DIR="$HOME/.nvm"
 export PATH="$HOME/.local/bin:$PATH"
 
 export TERM=xterm-256color
+export LANG=en_US.UTF-8

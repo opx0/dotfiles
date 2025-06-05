@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PACKAGE_FILES=("packages.txt" "dev.txt" "sysPackages.txt")
+PACKAGE_FILES=("pkgs.txt" "devTools.txt" "sysPkgs.txt")
 
 for PACKAGE_FILE in "${PACKAGE_FILES[@]}"; do
   if [ ! -f "$PACKAGE_FILE" ]; then
