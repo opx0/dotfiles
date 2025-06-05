@@ -1,0 +1,71 @@
+--> Package Managers / Build Systems
+yarn
+npm
+bun-bin
+nodejs
+
+--> Build Tools / Compilers / Build Automation
+automake
+cmake
+rust
+
+--> System Monitoring / Resource Management
+bpytop
+btop
+procs
+battop-bin
+fastfetch
+dust
+duf
+ncdu
+cmatrix
+
+--> Terminal / Shell Tools
+bat
+exa
+fd
+fzf
+dog
+starship
+the_silver_searcher
+sd
+zoxide
+yazi
+ranger
+atuin
+
+
+--> Version Control / Git Tools
+lazygit
+
+--> Database Tools
+mongocli
+pgcli
+
+--> Multiplexers / Session Managers
+tmux
+zellij
+
+--> Network / Download Tools
+wget
+xh
+transmission-gtk
+
+--> JSON / YAML Processing
+jq
+yq
+
+--> System Configuration / Utilities
+stow
+envycontrol
+#gcalcli
+#laptop-mode-tools
+#cpupower
+#auto-cpufreq
+#tlp
+
+--> Miscellaneous
+nil
+vlc
+qredshift
+redshift-minimal

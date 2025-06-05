@@ -1,0 +1,31 @@
+--> Fonts
+ttf-jetbrains-mono-nerd
+ttf-nerd-fonts-symbols
+ttf-nerd-fonts-symbols-mono
+
+--> General Linux Utilities
+brightnessctl
+gvfs
+gvfs-mtp
+zsh
+#nushell
+reflector
+gparted
+flameshot
+
+--> X11
+touchegg
+xdotool
+scrot
+xclip
+#clipsync
+
+--> Wayland
+nwg-look
+#wl-screenrec
+#ydotool
+#wl-copy
+#wl-paste
+#cliphist
+#wl-x11-clipsync
+#grim

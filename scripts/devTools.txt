@@ -1,0 +1,34 @@
+--> Editors & IDEs
+visual-studio-code-bin
+neovim
+helix
+
+--> Container & Cloud
+docker-desktop
+docker
+minikube
+kubectl
+
+--> API & Database Tools
+postman-bin
+#mongodb-compass
+
+--> Terminal Emulators
+wezterm
+alacritty
+ghostty
+
+Web Browsers
+zen-browser-bin
+google-chrome
+firefox-developer-edition
+
+--> Communication
+telegram-desktop
+discord
+
+--> Productivity & Utilities
+obsidian
+libreoffice-fresh-en-gb
+localsend-appimage
+#spotify-launcher
