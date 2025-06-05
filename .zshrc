@@ -1,29 +1,17 @@
-
-
-# Set the directory we want to store zinit and plugins
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
-# Download Zinit, if it's not there yet
 if [ ! -d "$ZINIT_HOME" ]; then
    mkdir -p "$(dirname $ZINIT_HOME)"
    git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 fi
 
-# Source/Load zinit
 source "${ZINIT_HOME}/zinit.zsh"
 
-
-# Add in Powerlevel10k
-# zinit ice depth=1; zinit light romkatv/powerlevel10k #downlload from git
-
-# Add in zsh plugins > the big THR33 of termainal
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
-# fuzzy finder wit tab
-zinit light Aloxaf/fzf-tab
+zinit light Aloxaf/fzf-tab # Fuzzy completion and more
 
-# Add in snippets
 zinit snippet OMZP::git
 zinit snippet OMZP::sudo
 zinit snippet OMZP::archlinux
@@ -31,17 +19,11 @@ zinit snippet OMZP::aws
 zinit snippet OMZP::kubectl
 zinit snippet OMZP::kubectx
 zinit snippet OMZP::command-not-found
+zinit snippet OMZP::docker
 
-# Load completions
 autoload -Uz compinit && compinit
 
 zinit cdreplay -q
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-# INSTANT_PROMPT will not announce itself that i'm enabled
-# typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 
 # Keybindings
 bindkey -e
@@ -49,7 +31,6 @@ bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 bindkey '^[w' kill-region
 
-# History and igore duplicate
 HISTSIZE=10000
 HISTFILE=~/.zsh_history
 SAVEHIST=$HISTSIZE
@@ -62,7 +43,6 @@ setopt hist_save_no_dups
 setopt hist_ignore_dups
 setopt hist_find_no_dups
 
-# Completion styling without uper lower erc
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu no
@@ -70,13 +50,11 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
 
-# Aliases
 alias ls='ls --color'
 alias vim='nvim'
 alias v='nvim'
 alias cl='clear'
-alias la=tree
-alias op="code ."
+alias la='tree'
 
 #dev
 alias bund="bun run dev"
@@ -102,7 +80,6 @@ alias gp="git push origin "
 alias gpm="git push origin main"
 alias gpu="git pull origin"
 alias gst="git status"
-alias glog="git log --graph --topo-order --pretty='%w(100,0,6)%C(yellow)%h%C(bold)%C(black)%d %C(cyan)%ar %C(green)%an%n%C(bold)%C(white)%s %N' --abbrev-commit"
 alias gdiff="git diff"
 alias gco="git checkout"
 alias gb='git branch'
@@ -134,40 +111,7 @@ function ranger {
 	command rm -f -- "$tempfile" 2>/dev/null
 }
 alias rr='ranger'
-
-## aother cool rustbased file manager inside terminal
 alias fs='yazi'
-
-
-
-# Detect AUR wrapper
-if pacman -Qi yay &>/dev/null; then
-   aurhelper="yay"
-elif pacman -Qi paru &>/dev/null; then
-   aurhelper="paru"
-fi
-
-function in {
-    local -a inPkg=("$@")
-    local -a arch=()
-    local -a aur=()
-
-    for pkg in "${inPkg[@]}"; do
-        if pacman -Si "${pkg}" &>/dev/null; then
-            arch+=("${pkg}")
-        else
-            aur+=("${pkg}")
-        fi
-    done
-
-    if [[ ${#arch[@]} -gt 0 ]]; then
-        sudo pacman -S "${arch[@]}"
-    fi
-
-    if [[ ${#aur[@]} -gt 0 ]]; then
-        ${aurhelper} -S "${aur[@]}"
-    fi
-}
 
 ## tmux
 alias ta='tmux attach'
@@ -180,12 +124,6 @@ fv() { nvim "$(find . -type f -not -path '*/.*' | fzf)" }
 # Shell integrations
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd z zsh)"
-
-## [Completion]
-## Completion scripts setup. Remove the following line to uninstall
-[[ -f /home/aura/.dart-cli-completion/zsh-config.zsh ]] && . /home/aura/.dart-cli-completion/zsh-config.zsh || true
-## [/Completion]
-
 
 #. "$HOME/.atuin/bin/env"
 eval "$(atuin init zsh --disable-up-arrow)"
@@ -209,8 +147,6 @@ esac
 # pnpm end
 
 export PATH=$PATH:/home/abhi/.spicetify
-export GOOGLE_API_KEY="AIzaSyCI8YMBO2m6MK8pnfLRMB0ZPl8s0Of70wE"
-export TERM=xterm-256color
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -218,3 +154,5 @@ export NVM_DIR="$HOME/.nvm"
 
 # paths
 export PATH="$HOME/.local/bin:$PATH"
+
+export TERM=xterm-256color

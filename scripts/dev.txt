@@ -17,3 +17,6 @@ zen-browser-bin
 libreoffice-fresh-en-gb
 localsend-appimage
 ghostty
+flameshot
+scrot
+grim
