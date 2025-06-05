@@ -1,27 +1,35 @@
--- This contains mainly Neogit but also a bunch of Git settings
--- like fetching branches with telescope or blaming with fugitive
-local neogit = require('neogit')
+return {
+  {
+    "NeogitOrg/neogit",
+    lazy = false,
+    dependencies = {
+      "nvim-lua/plenary.nvim",         -- required
+      "sindrets/diffview.nvim",        -- optional - Diff integration
+      "nvim-telescope/telescope.nvim", -- optional
+    },
+    config = function()
+      require('neogit').setup()
 
-vim.keymap.set("n", "<leader>gs", neogit.open,
-  {silent = true, noremap = true}
-)
+      -- Keymaps
+      vim.keymap.set("n", "<leader>gs", "<cmd>Neogit<cr>", { desc = "Open Neogit" })
+      vim.keymap.set("n", "<leader>gc", "<cmd>Neogit commit<cr>", { desc = "Git commit" })
+      vim.keymap.set("n", "<leader>gp", "<cmd>Neogit push<cr>", { desc = "Git push" })
+      vim.keymap.set("n", "<leader>gl", "<cmd>Neogit log<cr>", { desc = "Git log" })
+    end
+  },
 
-vim.keymap.set("n", "<leader>gc", ":Neogit commit<CR>",
-  {silent = true, noremap = true}
-)
+  -- Additional git tools
+  {
+    'tpope/vim-fugitive',
+    cmd = { "Git", "Gwrite", "Gread", "Ggrep", "GMove", "GDelete", "GBrowse", "GRemove" },
+  },
 
-vim.keymap.set("n", "<leader>gp", ":Neogit pull<CR>",
-  {silent = true, noremap = true}
-)
-
-vim.keymap.set("n", "<leader>gP", ":Neogit push<CR>",
-  {silent = true, noremap = true}
-)
-
-vim.keymap.set("n", "<leader>gb", ":Telescope git_branches<CR>",
-  {silent = true, noremap = true}
-)
-
-vim.keymap.set("n", "<leader>gB", ":G blame<CR>",
-  {silent = true, noremap = true}
-)
+  {
+    'ThePrimeagen/git-worktree.nvim',
+    dependencies = { "nvim-telescope/telescope.nvim" },
+    config = function()
+      require("git-worktree").setup()
+      require("telescope").load_extension("git_worktree")
+    end
+  }
+}
