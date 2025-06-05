@@ -82,6 +82,7 @@ alias gco="git checkout"
 alias gb='git branch'
 alias gba='git branch -a'
 alias gadd='git add'
+alias gax='git add .'
 alias ga='git add -p'
 alias gcoall='git checkout -- .'
 alias gr='git remote'
