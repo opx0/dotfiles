@@ -1,72 +1,56 @@
--- [[ Configure Treesitter ]]
--- See `:help nvim-treesitter`
-require('nvim-treesitter.configs').setup {
-  -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { 
-    'go', 'lua', 'python', 'rust', 'typescript', 'regex', 
-    'bash', 'markdown', 'markdown_inline', 'kdl', 'sql', 'org', 'terraform',
-    'html', 'css', 'javascript', 'yaml', 'json', 'toml',
-  },
+return {
+	{
+		"nvim-treesitter/nvim-treesitter",
+		event = { "BufReadPost", "BufNewFile" },
+		cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
+		build = ":TSUpdate",
+		dependencies = {
+			"apple/pkl-neovim",
+			"windwp/nvim-ts-autotag",
+			"EmranMR/tree-sitter-blade",
+		},
+		opts = function()
+			return require("plugins.configs.treesitter")
+		end,
+		config = function(_, opts)
+			local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
 
-  highlight = { enable = true },
-  indent = { enable = true },
-  incremental_selection = {
-    enable = true,
-    keymaps = {
-      init_selection = '<c-space>',
-      node_incremental = '<c-space>',
-      scope_incremental = '<c-s>',
-      node_decremental = '<c-backspace>',
-    },
-  },
-  textobjects = {
-    select = {
-      enable = false,
-      lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
-      keymaps = {
-        -- You can use the capture groups defined in textobjects.scm
-        ['aa'] = '@parameter.outer',
-        ['ia'] = '@parameter.inner',
-        -- ['aF'] = '@function.outer',
-        -- ['iF'] = '@function.inner',
-        ['ac'] = '@class.outer',
-        ['ic'] = '@class.inner',
-        ['ii'] = '@conditional.inner',
-        ['ai'] = '@conditional.outer',
-        -- ['il'] = '@loop.inner',
-        -- ['al'] = '@loop.outer',
-        ['at'] = '@comment.outer',
-      },
-    },
-    move = {
-      enable = false,
-      set_jumps = true, -- whether to set jumps in the jumplist
-      goto_next_start = {
-        [']f'] = '@function.outer',
-        [']]'] = '@class.outer',
-      },
-      goto_next_end = {
-        [']F'] = '@function.outer',
-        [']['] = '@class.outer',
-      },
-      goto_previous_start = {
-        ['[f'] = '@function.outer',
-        ['[['] = '@class.outer',
-      },
-      goto_previous_end = {
-        ['[F'] = '@function.outer',
-        ['[]'] = '@class.outer',
-      },
-    },
-    swap = {
-      enable = true,
-      swap_next = {
-        ['<leader>a'] = '@parameter.inner',
-      },
-      swap_previous = {
-        ['<leader>A'] = '@parameter.inner',
-      },
-    },
-  },
+			parser_config.blade = {
+				install_info = {
+					url = "https://github.com/EmranMR/tree-sitter-blade",
+					files = { "src/parser.c" },
+					branch = "main",
+				},
+				filetype = "blade",
+			}
+
+			require("nvim-treesitter.configs").setup(opts)
+
+			vim.filetype.add({
+				pattern = {
+					[".*%.blade%.php"] = "blade",
+				},
+			})
+		end,
+	},
+	{
+		"windwp/nvim-ts-autotag",
+		event = { "BufReadPost", "BufNewFile" },
+		config = function(_, opts)
+			require("nvim-ts-autotag").setup({
+				opts = {
+					-- Defaults
+					enable_close = true,      -- Auto close tags
+					enable_rename = true,     -- Auto rename pairs of tags
+					enable_close_on_slash = false, -- Auto close on trailing </
+				},
+				-- Also override individual filetype configs, these take priority.
+				-- Empty by default, useful if one of the "opts" global settings
+				-- doesn't work well in a specific filetype
+				aliases = {
+					["template"] = "html",
+				},
+			})
+		end,
+	},
 }
-

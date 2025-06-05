@@ -1,27 +1,21 @@
-require('lualine').setup {
-  options = {
-    icons_enabled = true,
-    component_separators = '|',
-    section_separators = '',
-  },
-  sections = {
-    lualine_x = {
-      {
-        require("noice").api.statusline.mode.get,
-        cond = require("noice").api.statusline.mode.has,
-        color = { fg = "#ff9e64" },
+return {
+  {
+    'nvim-lualine/lualine.nvim',
+    event = "VeryLazy",
+    opts = {
+      options = {
+        icons_enabled = true,
+        theme = 'auto',
+        component_separators = '|',
+        section_separators = { left = '', right = '' },
       },
-      {
-        require("noice").api.status.command.get,
-        cond = require("noice").api.status.command.has,
-        color = { fg = "#ff9e64" },
+      sections = {
+        lualine_x = {
+          function()
+            return vim.loop.os_uname().sysname == "Linux" and "󰣇" or "󰌽"
+          end,
+        },
       },
     },
-    lualine_a = {
-      {
-        'buffers',
-      }
-    }
-  }
+  },
 }
-

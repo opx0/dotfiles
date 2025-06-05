@@ -1,35 +1,64 @@
-require("zen-mode").setup({
-  window = {
-    backdrop = 0.95, 
-    width = 120, -- width of the Zen window
-    height = 1, -- height of the Zen window
-    options = {
-      signcolumn = "no", -- disable signcolumn
-      number = false, -- disable number column
-      relativenumber = false, -- disable relative numbers
-      -- cursorline = false, -- disable cursorline
-      -- cursorcolumn = false, -- disable cursor column
-      -- foldcolumn = "0", -- disable fold column
-      -- list = false, -- disable whitespace characters
-    },
-  },
-  plugins = {
-    -- disable some global vim options (vim.o...)
-    options = {
-      enabled = true,
-      ruler = true, -- disables the ruler text in the cmd line area
-      showcmd = false, -- disables the command in the last line of the screen
-      -- you may turn on/off statusline in zen mode by setting 'laststatus' 
-      -- statusline will be shown only if 'laststatus' == 3
-      laststatus = 0, -- turn off the statusline in zen mode
-    },
-    twilight = { enabled = false }, -- enable to start Twilight when zen mode opens
-    gitsigns = { enabled = false }, -- disables git signs
-    tmux = { enabled = true }, -- disables the tmux statusline
-    wezterm = {
-      enabled = true,
-      font = "+20", -- (10% increase per step)
-    },
-  },
-})
+return {
+  {
+    'folke/zen-mode.nvim',
+    cmd = "ZenMode",
+    config = function()
+      require("zen-mode").setup({
+        window = {
+          backdrop = 0.95,
+          width = 120,
+          height = 1,
+          options = {
+            signcolumn = "no",
+            number = false,
+            relativenumber = false,
+            cursorline = false,
+            cursorcolumn = false,
+            foldcolumn = "0",
+            list = false,
+          },
+        },
+        plugins = {
+          options = {
+            enabled = true,
+            ruler = false,
+            showcmd = false,
+          },
+          twilight = { enabled = true },
+          gitsigns = { enabled = false },
+          tmux = { enabled = false },
+        },
+      })
 
+      -- Keymap
+      vim.keymap.set("n", "<leader>z", "<cmd>ZenMode<cr>", { desc = "Toggle Zen Mode" })
+    end
+  },
+
+  {
+    "folke/twilight.nvim",
+    ft = "markdown",
+    opts = {
+      dimming = {
+        alpha = 0.25,
+        color = { "Normal", "#ffffff" },
+        term_bg = "#000000",
+        inactive = false,
+      },
+      context = 10,
+      treesitter = true,
+      expand = {
+        "function",
+        "method",
+        "table",
+        "if_statement",
+      },
+    },
+    config = function(_, opts)
+      require("twilight").setup(opts)
+
+      -- Keymap
+      vim.keymap.set("n", "tw", ":Twilight<enter>", { noremap = false, desc = "Toggle Twilight" })
+    end
+  }
+}
