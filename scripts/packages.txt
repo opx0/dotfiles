@@ -50,7 +50,7 @@ nwg-look
 transmission-gtk
 wl-screenrec
 vlc
-redshift
+redshift-minimal
 #gcalcli
 #laptop-mode-tools
 #cpupower
