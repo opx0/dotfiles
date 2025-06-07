@@ -59,7 +59,7 @@ alias bunrnd="bun run dev"
 
 # System
 alias fuckoff="shutdown now"
-alias foff="shotdown now"
+alias foff='shutdown now'
 alias re="shutdown -r now"
 
 # Dirs

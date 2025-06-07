@@ -1,48 +1,39 @@
 local wezterm = require 'wezterm'
 local gpus = wezterm.gui.enumerate_gpus()
 
+local gpu_preference = nil
+for _, gpu in ipairs(gpus) do
+    if gpu.device_type == 'DiscreteGpu' then
+        gpu_preference = gpu
+        break
+    end
+end
+
 return {
+	front_end = "WebGpu",
+	webgpu_preferred_adapter = gpu_preference,
+	webgpu_power_preference = "HighPerformance",
+
 	enable_wayland = false,
-	adjust_window_size_when_changing_font_size = false,
-  max_fps                     = 120,                                   -- :contentReference[oaicite:1]{index=1}
+	adjust_window_size_when_changing_font_size = true,
+	max_fps = 120,
+	animation_fps = 60,
 
-	-- color_scheme = 'termnial.sexy',
-	color_scheme = 'Catppuccin Mocha',
+	color_scheme = 'Tokyo Night',
 	enable_tab_bar = false,
-	font_size = 13.0,
-	font = wezterm.font('JetBrains Mono'),
-	-- macos_window_background_blur = 40,
-	macos_window_background_blur = 30,
+	font_size = 13,
+	font = wezterm.font_with_fallback({
+		'JetBrains Mono',
+		'Noto Color Emoji',
+    'Dank Mono'
+	}),
 
-	-- window_background_image = '/Users/omerhamerman/Downloads/3840x1080-Wallpaper-041.jpg',
-	-- window_background_image_hsb = {
-	-- 	brightness = 0.01,
-	-- 	hue = 1.0,
-	-- 	saturation = 0.5,
-	-- },
-	-- window_background_opacity = 0.92,
-	window_background_opacity = 1.0,
-	-- window_background_opacity = 0.78,
-	-- window_background_opacity = 0.20,
+	window_background_opacity = 0.85,
 	window_decorations = 'RESIZE',
-	keys = {
-		{
-			key = 'q',
-			mods = 'CTRL',
-			action = wezterm.action.ToggleFullScreen,
-		},
-		{
-			key = '\'',
-			mods = 'CTRL',
-			action = wezterm.action.ClearScrollback 'ScrollbackAndViewport',
-		},
-	},
-	mouse_bindings = {
-	  -- Ctrl-click will open the link under the mouse cursor
-	  {
-	    event = { Up = { streak = 1, button = 'Left' } },
-	    mods = 'CTRL',
-	    action = wezterm.action.OpenLinkAtMouseCursor,
-	  },
-	},
+
+	enable_scroll_bar = false,
+	scrollback_lines = 5000,
+	use_dead_keys = false,
+	force_reverse_video_cursor = true,
+	term = "wezterm",
 }
