@@ -1,9 +1,3 @@
---> Package Managers / Build Systems
-yarn
-npm
-bun-bin
-nodejs
-
 --> Build Tools / Compilers / Build Automation
 automake
 cmake

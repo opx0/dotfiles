@@ -1,22 +1,125 @@
-*.link
-*.symlink
-.config/tmux/plugins/tmux-resurrect/run_tests
-.config/tmux/plugins/tmux-resurrect/tests/helpers/helpers.sh
-.config/tmux/plugins/tmux-resurrect/tests/run_tests_in_isolation
-.config/tmux/plugins/tmux-continuum/scripts/handle_tmux_automatic_start/README.md
-alacritty
-helix
-kitty
-nvim
-nvim.main
-nvim.min
-starship
-tmux
-tmux.minimal
-# waybar
-wezterm
-zellij
-zshrc.startship
-tmux/plugins/
-fzf
-history.txt
+# Stow-related files
+.stow-local-ignore
+
+# System files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Temporary files
+*~
+*.swp
+*.swo
+*.tmp
+*.temp
+.#*
+
+# Log files
+*.log
+
+# Cache directories
+.cache/
+cache/
+
+# Local configuration that shouldn't be shared
+local/
+.local/
+*.local
+
+# Backup files
+*.bak
+*.backup
+*.orig
+
+# IDE/Editor files
+.vscode/
+.idea/
+*.sublime-*
+
+# OS generated files
+.directory
+.fuse_hidden*
+
+# Application-specific directories that might contain sensitive data
+# or are generated/downloaded content
+.config/*/cache/
+.config/*/Cache/
+.config/*/logs/
+.config/*/log/
+.config/*/tmp/
+.config/*/temp/
+
+# Plugin managers and downloaded content
+.config/tmux/plugins/
+
+# Neovim plugins and generated files
+.config/nvim/lazy-lock.json
+.config/nvim/plugin/packer_compiled.lua
+.config/nvim/.lazy/
+.config/nvim/lazy/
+.config/nvim/site/
+.config/nvim/plugin/
+.config/nvim/after/plugin/
+.config/nvim/spell/
+.config/nvim/.netrwhist
+.config/nvim/undodir/
+.config/nvim/swap/
+.config/nvim/backup/
+
+# Shell history and sensitive files
+.bash_history
+.zsh_history
+.fish_history
+.python_history
+.lesshst
+.mysql_history
+.psql_history
+
+# SSH keys and certificates
+.ssh/id_*
+.ssh/*.pem
+.ssh/*.key
+.ssh/known_hosts*
+
+# GPG keys
+.gnupg/private-keys-v1.d/
+.gnupg/pubring.gpg~
+.gnupg/secring.gpg
+.gnupg/trustdb.gpg
+.gnupg/random_seed
+
+# Application state that shouldn't be shared
+.config/*/state/
+.config/*/State/
+.config/*/session/
+.config/*/Session/
+
+# Compiled files
+*.pyc
+*.pyo
+__pycache__/
+*.class
+*.o
+*.so
+
+# Package manager files (if present in dotfiles)
+node_modules/
+.npm/
+.yarn/
+
+# Atuin (as mentioned in stow-local-ignore)
+.config/atuin/
+
+# Any local scripts or tools
+scripts/local/
+bin/local/
+
+# Hyprland (as mentioned in stow-local-ignore)
+.config/hyprland/
+
+# Any files ending with .local (for local overrides)
+*.local.*
