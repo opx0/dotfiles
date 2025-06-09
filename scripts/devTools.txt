@@ -1,3 +1,10 @@
+--> Package Managers / Build Systems
+yarn
+npm
+bun-bin
+nodejs
+pnpm-bin
+
 --> Editors & IDEs
 visual-studio-code-bin
 neovim
