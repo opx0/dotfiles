@@ -1,15 +1,10 @@
-# nvimx Keybindings Reference
-
-A comprehensive guide to all keybindings in the nvimx Neovim configuration.
-
+# nvim Keybindings Reference
 ## Leader Key
 - **Leader**: `<Space>` (spacebar)
 - **Local Leader**: `<Space>` (spacebar)
-
 ---
 
 ## 🚀 Essential Quick Keys
-
 ### Basic Navigation
 | Key | Mode | Action | Description |
 |-----|------|--------|-------------|
