@@ -21,7 +21,7 @@ return {
 
 	color_scheme = 'Tokyo Night',
 	enable_tab_bar = false,
-	font_size = 13,
+	font_size = 14,
 	font = wezterm.font_with_fallback({
 		'JetBrains Mono',
 		'Noto Color Emoji',

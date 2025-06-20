@@ -22,7 +22,7 @@ postman-bin
 
 --> Terminal Emulators
 wezterm
-alacritty
+#alacritty
 ghostty
 
 Web Browsers
