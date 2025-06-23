@@ -130,9 +130,6 @@ eval "$(zoxide init --cmd z zsh)"
 
 #. "$HOME/.atuin/bin/env"
 eval "$(atuin init zsh --disable-up-arrow)"
-export STARSHIP_CONFIG=~/.config/starship/starship.toml
-eval "$(starship init zsh)"
-
 
 # bun completions
 [ -s "/home/abhi/.bun/_bun" ] && source "/home/abhi/.bun/_bun"
@@ -160,3 +157,15 @@ export PATH="$HOME/.local/bin:$PATH"
 
 export TERM=xterm-256color
 export LANG=en_US.UTF-8
+
+# Check if we're running in VS Code integrated terminal
+if [[ "$TERM_PROGRAM" == "vscode" ]]; then
+    export STARSHIP_CONFIG="/home/abhi/dotfiles/.config/starship/starship-minimal.toml"
+else
+    export STARSHIP_CONFIG="/home/abhi/.config/starship/starship.toml"
+fi
+
+# Initialize starship
+eval "$(starship init zsh)"
+alias kamal='/home/abhi/.gem/ruby/3.4.0/bin/kamal'
+export PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
