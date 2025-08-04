@@ -169,3 +169,9 @@ fi
 eval "$(starship init zsh)"
 alias kamal='/home/abhi/.gem/ruby/3.4.0/bin/kamal'
 export PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
+export PERPLEXITY_API_KEY="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"
+
+# Xan completions
+function __xan {
+    xan compgen "$1" "$2" "$3"
+}

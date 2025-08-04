@@ -1,9 +1,9 @@
 theme = tokyonight
-font-size = 13
-background-opacity = 0.85
-mouse-hide-while-typing = true
-window-decoration = false
+font-size = 14
+window-decoration = none
 macos-option-as-alt = true
+font-synthetic-style = true
+minimum-contrast = 3.0
 
 keybind = global:cmd+/=toggle_quick_terminal
 keybind = ctrl+space>n=new_window
@@ -19,3 +19,5 @@ background-opacity = 1.0
 background-blur = false
 freetype-load-flags = no-hinting, monochrome
 gtk-opengl-debug = false
+link-url = true
+resize-overlay-duration = 200ms
