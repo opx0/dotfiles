@@ -7,7 +7,7 @@ return {
 		dependencies = {
 			"apple/pkl-neovim",
 			"windwp/nvim-ts-autotag",
-			"EmranMR/tree-sitter-blade",
+			-- "EmranMR/tree-sitter-blade",
 		},
 		opts = function()
 			return require("plugins.configs.treesitter")
@@ -15,22 +15,22 @@ return {
 		config = function(_, opts)
 			local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
 
-			parser_config.blade = {
-				install_info = {
-					url = "https://github.com/EmranMR/tree-sitter-blade",
-					files = { "src/parser.c" },
-					branch = "main",
-				},
-				filetype = "blade",
-			}
+			-- parser_config.blade = {
+			-- 	install_info = {
+			-- 		url = "https://github.com/EmranMR/tree-sitter-blade",
+			-- 		files = { "src/parser.c" },
+			-- 		branch = "main",
+			-- 	},
+			-- 	filetype = "blade",
+			-- }
 
 			require("nvim-treesitter.configs").setup(opts)
 
-			vim.filetype.add({
-				pattern = {
-					[".*%.blade%.php"] = "blade",
-				},
-			})
+			-- vim.filetype.add({
+			-- 	pattern = {
+			-- 		[".*%.blade%.php"] = "blade",
+			-- 	},
+			-- })
 		end,
 	},
 	{
