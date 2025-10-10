@@ -7,8 +7,6 @@ return {
 		"typescript",
 		"javascript",
 		"tsx",
-		"php",
-		"blade",
 	},
 	highlight = {
 		enable = true,

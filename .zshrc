@@ -167,11 +167,48 @@ fi
 
 # Initialize starship
 eval "$(starship init zsh)"
-alias kamal='/home/abhi/.gem/ruby/3.4.0/bin/kamal'
-export PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
-export PERPLEXITY_API_KEY="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"
+
+# # Kamal
+# alias kamal='/home/abhi/.gem/ruby/3.4.0/bin/kamal'
+# export PATH="$(ruby -e 'print Gem.user_dir')/bin:$PATH"
 
 # Xan completions
 function __xan {
     xan compgen "$1" "$2" "$3"
 }
+
+alias players="curl http://100.78.89.96:8080/players"
+
+# ========== JustPlay Music App ==========
+
+# Start JustPlay with CAVA visualization
+justplay() {
+    /home/ay/Projects/justPlay/start-with-cava.sh
+}
+
+# Start JustPlay without visualization
+justplay-simple() {
+    cd /home/ay/Projects/justPlay
+    docker-compose up -d
+    sleep 3
+    docker attach justplay-app
+}
+
+# Stop JustPlay
+justplay-stop() {
+    cd /home/ay/Projects/justPlay
+    docker-compose down
+    echo "🛑 JustPlay stopped"
+}
+
+# View JustPlay logs
+justplay-logs() {
+    docker logs -f justplay-app
+}
+
+# Auto-start JustPlay on terminal launch (uncomment to enable)
+# if ! docker ps | grep -q "justplay-app"; then
+#     echo "🎵 Auto-starting JustPlay..."
+#     cd /home/ay/Projects/justPlay && docker-compose up -d
+# fi
+
