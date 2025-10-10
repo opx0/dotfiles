@@ -11,10 +11,10 @@ neovim
 helix
 
 --> Container & Cloud
-docker-desktop
 docker
 minikube
 kubectl
+lazydocker
 
 --> API & Database Tools
 postman-bin
@@ -22,10 +22,9 @@ postman-bin
 
 --> Terminal Emulators
 wezterm
-#alacritty
 ghostty
 
-Web Browsers
+--> Web Browsers
 zen-browser-bin
 google-chrome
 firefox-developer-edition
@@ -38,4 +37,4 @@ discord
 obsidian
 libreoffice-fresh-en-gb
 localsend-appimage
-#spotify-launcher
+syncthing

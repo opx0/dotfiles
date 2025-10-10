@@ -2,16 +2,18 @@
 ttf-jetbrains-mono-nerd
 ttf-nerd-fonts-symbols
 ttf-nerd-fonts-symbols-mono
+noto-fonts
 
 --> General Linux Utilities
 brightnessctl
 gvfs
 gvfs-mtp
 zsh
-#nushell
+nushell
 reflector
 gparted
 flameshot
+ark
 
 --> X11
 touchegg
