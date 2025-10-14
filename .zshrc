@@ -179,28 +179,6 @@ function __xan {
 
 alias players="curl http://100.78.89.96:8080/players"
 
-# ========== JustPlay Music App ==========
-
-# Start JustPlay with CAVA visualization
-justplay() {
-    /home/ay/Projects/justPlay/start-with-cava.sh
-}
-
-# Start JustPlay without visualization
-justplay-simple() {
-    cd /home/ay/Projects/justPlay
-    docker-compose up -d
-    sleep 3
-    docker attach justplay-app
-}
-
-# Stop JustPlay
-justplay-stop() {
-    cd /home/ay/Projects/justPlay
-    docker-compose down
-    echo "🛑 JustPlay stopped"
-}
-
 # View JustPlay logs
 justplay-logs() {
     docker logs -f justplay-app
@@ -211,4 +189,4 @@ justplay-logs() {
 #     echo "🎵 Auto-starting JustPlay..."
 #     cd /home/ay/Projects/justPlay && docker-compose up -d
 # fi
-
+export PATH=~/.npm-global/bin:$PATH
