@@ -38,3 +38,6 @@ obsidian
 libreoffice-fresh-en-gb
 localsend-appimage
 syncthing
+
+--> environment tools
+uv

@@ -48,6 +48,8 @@ config.enable_tab_bar = false
 -- Font configuration
 config.font_size = 14
 config.font = wezterm.font_with_fallback({
+    "JetBrains Mono Nerd Font Mono",
+  "Symbol Nerd Font Mono",
     'JetBrains Mono',
     'Noto Color Emoji',
     'Dank Mono',

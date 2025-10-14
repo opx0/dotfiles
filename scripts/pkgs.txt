@@ -27,7 +27,7 @@ zoxide
 yazi
 ranger
 atuin
-
+scrcpy
 
 --> Version Control / Git Tools
 lazygit
