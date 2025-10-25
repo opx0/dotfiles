@@ -2,7 +2,7 @@
 automake
 cmake
 rust
-
+tree
 --> System Monitoring / Resource Management
 bpytop
 btop
@@ -59,7 +59,5 @@ envycontrol
 #tlp
 
 --> Miscellaneous
-nil
 vlc
-qredshift
-redshift-minimal
+gammastep

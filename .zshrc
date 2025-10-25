@@ -190,3 +190,5 @@ justplay-logs() {
 #     cd /home/ay/Projects/justPlay && docker-compose up -d
 # fi
 export PATH=~/.npm-global/bin:$PATH
+
+[[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"
