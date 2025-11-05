@@ -3,7 +3,6 @@ return {
 		"neovim/nvim-lspconfig",
 		lazy = false,
 		config = function()
-			local lspconfig = require("lspconfig")
 			local capabilities = vim.lsp.protocol.make_client_capabilities()
 			capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 
@@ -47,7 +46,10 @@ return {
 			end
 		end
 
-			lspconfig.lua_ls.setup({
+			vim.lsp.config.lua_ls = {
+				cmd = { "lua-language-server" },
+				filetypes = { "lua" },
+				root_markers = { ".luarc.json", ".luarc.jsonc", ".luacheckrc", ".stylua.toml", "stylua.toml", "selene.toml", "selene.yml", ".git" },
 				settings = {
 					Lua = {
 						diagnostics = {
@@ -56,28 +58,51 @@ return {
 						},
 					},
 				},
-			})
+			}
 
-			lspconfig.tailwindcss.setup({
-				on_attach = on_attach,
-				capabilities = capabilities,
+			vim.lsp.config.tailwindcss = {
+				cmd = { "tailwindcss-language-server", "--stdio" },
 				filetypes = { "astro", "javascript", "typescript", "react" },
-			})
-
-			lspconfig.nil_ls.setup({
+				root_markers = { "tailwind.config.js", "tailwind.config.cjs", "tailwind.config.mjs", "tailwind.config.ts", ".git" },
 				on_attach = on_attach,
 				capabilities = capabilities,
-			})
+			}
 
-			lspconfig.ts_ls.setup({})
-
-			lspconfig.html.setup({
+			vim.lsp.config.nil_ls = {
+				cmd = { "nil" },
+				filetypes = { "nix" },
+				root_markers = { "flake.nix", "default.nix", "shell.nix", ".git" },
+				on_attach = on_attach,
 				capabilities = capabilities,
-			})
+			}
 
-			lspconfig.htmx.setup({
+			vim.lsp.config.ts_ls = {
+				cmd = { "typescript-language-server", "--stdio" },
+				filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
+				root_markers = { "tsconfig.json", "jsconfig.json", "package.json", ".git" },
+			}
+
+			vim.lsp.config.html = {
+				cmd = { "vscode-html-language-server", "--stdio" },
+				filetypes = { "html" },
+				root_markers = { "package.json", ".git" },
 				capabilities = capabilities,
-			})
+			}
+
+			vim.lsp.config.htmx = {
+				cmd = { "htmx-lsp" },
+				filetypes = { "html", "templ" },
+				root_markers = { ".git" },
+				capabilities = capabilities,
+			}
+
+			-- Enable the language servers
+			vim.lsp.enable("lua_ls")
+			vim.lsp.enable("tailwindcss")
+			vim.lsp.enable("nil_ls")
+			vim.lsp.enable("ts_ls")
+			vim.lsp.enable("html")
+			vim.lsp.enable("htmx")
 		end,
 	},
 }

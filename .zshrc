@@ -192,3 +192,32 @@ justplay-logs() {
 export PATH=~/.npm-global/bin:$PATH
 
 [[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"
+
+# imagemagick
+alias ap21p='magick *.png output.pdf' //all png to pdf
+alias aj21p='magick *.jpg output.pdf' //all jpg to pdf
+export PATH=~/.npm-global/bin:$PATH
+
+
+#if [ -f ~/.gemini_keys ]; then
+#    source ~/.gemKeys
+#fi#
+source ~/.gemKeys
+
+export ANDROID_HOME=$HOME/Android/Sdk
+export PATH=$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$PATH
+
+
+export JAVA_HOME=/usr/lib/jvm/default
+export PATH=$JAVA_HOME/bin:$PATH
+
+export JAVA_HOME=/usr/lib/jvm/default
+
+# Android SDK
+export ANDROID_HOME=/home/abhi/Android/Sdk
+export PATH=$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$PATH
+
+# ${UserConfigDir}/zsh/.zshrc
+export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
+zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
+source <(carapace _carapace)

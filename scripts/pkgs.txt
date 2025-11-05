@@ -61,3 +61,5 @@ envycontrol
 --> Miscellaneous
 vlc
 gammastep
+carapace
+ripgrep
