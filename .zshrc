@@ -10,7 +10,7 @@ source "${ZINIT_HOME}/zinit.zsh"
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
-zinit light Aloxaf/fzf-tab # Fuzzy completion and more
+# zinit light Aloxaf/fzf-tab # Fuzzy completion and more
 
 zinit snippet OMZP::git
 zinit snippet OMZP::sudo
@@ -43,8 +43,8 @@ setopt hist_find_no_dups
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu no
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
-zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
+# zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
+# zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
 
 alias ls='ls --color'
@@ -96,23 +96,6 @@ alias lt="eza --tree --level=2 --long --icons --git"
 alias xpwd="pwd | xclip -selection clipboard" # for x11
 alias pwdy="pwd | wl-copy" # for wayland
 
-
-function ranger {
-	local IFS=$'\t\n'
-	local tempfile="$(mktemp -t tmp.XXXXXX)"
-	local ranger_cmd=(
-		command
-		ranger
-		--cmd="map Q chain shell echo %d > "$tempfile"; quitall"
-	)
-
-	${ranger_cmd[@]} "$@"
-	if [[ -f "$tempfile" ]] && [[ "$(cat -- "$tempfile")" != "$(echo -n `pwd`)" ]]; then
-		cd -- "$(cat "$tempfile")" || return
-	fi
-	command rm -f -- "$tempfile" 2>/dev/null
-}
-alias rr='ranger'
 alias fs='yazi'
 
 ## tmux
@@ -184,11 +167,6 @@ justplay-logs() {
     docker logs -f justplay-app
 }
 
-# Auto-start JustPlay on terminal launch (uncomment to enable)
-# if ! docker ps | grep -q "justplay-app"; then
-#     echo "🎵 Auto-starting JustPlay..."
-#     cd /home/ay/Projects/justPlay && docker-compose up -d
-# fi
 export PATH=~/.npm-global/bin:$PATH
 
 [[ "$TERM_PROGRAM" == "kiro" ]] && . "$(kiro --locate-shell-integration-path zsh)"
@@ -204,20 +182,37 @@ export PATH=~/.npm-global/bin:$PATH
 #fi#
 source ~/.gemKeys
 
-export ANDROID_HOME=$HOME/Android/Sdk
-export PATH=$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$PATH
+#export ANDROID_HOME=$HOME/Android/Sdk
+#export PATH=$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$PATH
 
 
-export JAVA_HOME=/usr/lib/jvm/default
+# export JAVA_HOME=/usr/lib/jvm/default
+# export PATH=$JAVA_HOME/bin:$PATH
+
+# export JAVA_HOME=/usr/lib/jvm/default
+
+# # Android SDK
+# export ANDROID_HOME=/home/abhi/Android/Sdk
+# export PATH=$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$PATH
+
+
+# export ANDROID_HOME=$HOME/Android/Sdk
+# export PATH=$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$PATH
 export PATH=$JAVA_HOME/bin:$PATH
+export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
 
-export JAVA_HOME=/usr/lib/jvm/default
-
-# Android SDK
-export ANDROID_HOME=/home/abhi/Android/Sdk
-export PATH=$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$PATH
+export ANDROID_SDK_ROOT=$HOME/Android/Sdk
+export ANDROID_HOME=$HOME/Android/Sdk
+export PATH=$PATH:$ANDROID_SDK_ROOT/emulator:$ANDROID_SDK_ROOT/tools:$ANDROID_SDK_ROOT/tools/bin:$ANDROID_SDK_ROOT/platform-tools
+export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 # ${UserConfigDir}/zsh/.zshrc
 export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense' # optional
 zstyle ':completion:*' format $'\e[2;37mCompleting %d\e[m'
 source <(carapace _carapace)
+
+mkcd() {
+  mkdir -p "$1" && cd "$1"
+}
+export GPG_TTY=$(tty)
