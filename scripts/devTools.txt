@@ -36,7 +36,7 @@ discord
 --> Productivity & Utilities
 obsidian
 libreoffice-fresh-en-gb
-localsend-appimage
+localsend-bin
 syncthing
 
 --> environment tools
