@@ -1,6 +1,7 @@
 # --- 1. Path & Zinit Setup ---
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
+
 if [ ! -d "$ZINIT_HOME" ]; then
    mkdir -p "$(dirname $ZINIT_HOME)"
    git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
@@ -12,7 +13,7 @@ source "${ZINIT_HOME}/zinit.zsh"
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
-
+zinit light zsh-hooks/zsh-hooks
 # OMZ Snippets
 zinit snippet OMZP::git
 zinit snippet OMZP::sudo
@@ -101,3 +102,7 @@ for conf in ~/.config/zsh/*.zsh; do
   [ -f "$conf" ] && source "$conf"
 done
 unset conf
+export PATH=$PATH:$(go env GOPATH)/bin
+# eval $(thefuck --alias)
+export PATH="$PATH:/home/opx/Projects/dev-cli"
+eval "$(dev-cli hook zsh)"
