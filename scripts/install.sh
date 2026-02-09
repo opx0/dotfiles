@@ -8,7 +8,10 @@ for PACKAGE_FILE in "${PACKAGE_FILES[@]}"; do
     exit 1
   fi
 
-  while IFS= read -r package; do
+  while IFS= read -r package || [ -n "$package" ]; do
+    # Skip empty lines, comments (#), and section headers (-->)
+    [[ -z "$package" || "$package" =~ ^[[:space:]]*# || "$package" =~ ^--\> ]] && continue
+
     if pacman -Qi "$package" &>/dev/null || yay -Qi "$package" &>/dev/null; then
       echo "$package is already installed."
     else

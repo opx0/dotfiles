@@ -44,6 +44,7 @@ zellij
 wget
 xh
 transmission-gtk
+tailscale
 
 --> JSON / YAML Processing
 jq
@@ -59,7 +60,7 @@ envycontrol
 #tlp
 
 --> Miscellaneous
-vlc
-gammastep
+mpv
+#gammastep --> use hyprsunset insted
 carapace
 ripgrep

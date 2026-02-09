@@ -6,4 +6,5 @@ README.md
 --ignore=DS_Store
 --ignore=atuin/*
 hyprland
+dev
 .gitignore

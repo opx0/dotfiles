@@ -41,3 +41,8 @@ syncthing
 
 --> environment tools
 uv
+
+--> AI Stuff
+opencode-bin
+antigravity
+antigravity-tools-bin

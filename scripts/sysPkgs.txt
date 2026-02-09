@@ -31,3 +31,7 @@ nwg-look
 #cliphist
 #wl-x11-clipsync
 #grim
+
+--> ...
+libinput-gestures
+ydottool

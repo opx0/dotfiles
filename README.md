@@ -33,7 +33,7 @@ then use GNU stow to create symlinks
 stow .
 ```
 
-**if incounter some error in `stow .` then run**
+**if you encounter some error in `stow .` then run**
 
 ```sh
 stow --adopt .

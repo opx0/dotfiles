@@ -36,8 +36,6 @@ zinit cdreplay -q
 HISTFILE="$HOME/.local/state/zsh/history"
 HISTSIZE=10000
 SAVEHIST=$HISTSIZE
-HISTDUP=erase
-
 setopt appendhistory
 setopt sharehistory
 setopt hist_ignore_space
@@ -104,5 +102,5 @@ done
 unset conf
 export PATH=$PATH:$(go env GOPATH)/bin
 # eval $(thefuck --alias)
-export PATH="$PATH:/home/opx/Projects/dev-cli"
+export PATH="$PATH:$HOME/Projects/dev-cli"
 eval "$(dev-cli hook zsh)"

@@ -55,5 +55,5 @@ alias t='tmux'
 alias ta='tmux attach'
 
 # imagemagick
-alias ap21p='magick *.png output.pdf' //all png to pdf
-alias aj21p='magick *.jpg output.pdf' //all jpg to pdf
+alias ap21p='magick *.png output.pdf'  # all png to pdf
+alias aj21p='magick *.jpg output.pdf'  # all jpg to pdf

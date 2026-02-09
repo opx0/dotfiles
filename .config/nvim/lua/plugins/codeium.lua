@@ -1,7 +1,7 @@
 return {
   {
     "Exafunction/codeium.vim",
-    enabled = false, -- Disabled in favor of Supermaven
+    enabled = false,
     event = "BufEnter",
     config = function()
       -- Change '<C-g>' here to any keymap you like
