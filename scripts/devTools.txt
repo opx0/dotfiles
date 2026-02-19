@@ -1,15 +1,15 @@
 --> Package Managers / Build Systems
 yarn
 npm
-bun-bin
+bun
 nodejs
 pnpm-bin
 
 --> Editors & IDEs
 visual-studio-code-bin
 neovim
-helix
-
+visual-studio-code-insiders-bin
+zed
 --> Container & Cloud
 docker
 minikube
@@ -45,4 +45,3 @@ uv
 --> AI Stuff
 opencode-bin
 antigravity
-antigravity-tools-bin

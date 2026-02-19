@@ -64,3 +64,5 @@ mpv
 #gammastep --> use hyprsunset insted
 carapace
 ripgrep
+zip
+unzip
