@@ -1,7 +1,5 @@
 if [[ "$TERM_PROGRAM" == "vscode" ]]; then
-    export STARSHIP_CONFIG="/home/abhi/dotfiles/.config/starship/starship-minimal.toml"
+    export STARSHIP_CONFIG="$HOME/dotfiles/.config/starship/starship-minimal.toml"
 else
-    export STARSHIP_CONFIG="/home/abhi/.config/starship/starship.toml"
+    export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 fi
-
-eval "$(starship init zsh)"

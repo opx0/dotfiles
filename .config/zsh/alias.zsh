@@ -1,4 +1,3 @@
-
 alias ls='ls --color'
 alias vim='nvim'
 alias v='nvim'
@@ -8,6 +7,7 @@ alias la='tree'
 #dev
 alias bund="bun run dev"
 alias bunrnd="bun run dev"
+alias code="code-insiders"
 
 # System
 alias fuckoff="shutdown now"
@@ -57,3 +57,6 @@ alias ta='tmux attach'
 # imagemagick
 alias ap21p='magick *.png output.pdf'  # all png to pdf
 alias aj21p='magick *.jpg output.pdf'  # all jpg to pdf
+
+#zed-cli
+alias zed="zeditor"

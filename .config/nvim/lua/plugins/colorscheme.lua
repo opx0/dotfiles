@@ -11,7 +11,6 @@ return {
 					dark = "mocha",
 				},
 				transparent_background = true,
-				show_end_of_buffer = false,
 				term_colors = false,
 				dim_inactive = {
 					enabled = false,
@@ -41,7 +40,6 @@ return {
 					cmp = true,
 					gitsigns = true,
 					nvimtree = true,
-					treesitter = true,
 					notify = true,
 					mini = true,
 					telescope = {
@@ -54,7 +52,7 @@ return {
 				},
 			})
 
-			vim.cmd.colorscheme("catppuccin")
+			vim.cmd.colorscheme("catppuccin-nvim")
 
 			-- Transparency toggle
 			vim.keymap.set("n", "TT", ":TransparentToggle<CR>", {

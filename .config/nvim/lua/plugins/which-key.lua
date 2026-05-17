@@ -30,11 +30,17 @@ return {
 				{ "<leader>d", group = "Debug" },
 				{ "<leader>dt", desc = "Toggle DAP UI" },
 				{ "<leader>db", desc = "Toggle Breakpoint" },
+				{ "<leader>dB", desc = "Conditional Breakpoint" },
 				{ "<leader>dc", desc = "Continue" },
-				{ "<leader>dr", desc = "Reset DAP UI" },
+				{ "<leader>dR", desc = "Run Last" },
 				{ "<leader>ds", desc = "Step Over" },
 				{ "<leader>di", desc = "Step Into" },
 				{ "<leader>do", desc = "Step Out" },
+				{ "<leader>dr", desc = "Open REPL" },
+				{ "<leader>dl", desc = "List Breakpoints" },
+				{ "<leader>de", desc = "Exception Breakpoints" },
+				{ "<leader>dx", desc = "Clear Breakpoints" },
+				{ "<leader>dq", desc = "Terminate Session" },
 
 				-- Harpoon
 				{ "<leader>h", group = "Harpoon" },

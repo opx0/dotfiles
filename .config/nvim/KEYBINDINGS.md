@@ -126,11 +126,17 @@
 |-----|------|--------|-------------|
 | `<leader>dt` | Normal | `dapui.toggle()` | Toggle DAP UI |
 | `<leader>db` | Normal | `dap.toggle_breakpoint()` | Toggle breakpoint |
-| `<leader>dc` | Normal | `dap.continue()` | Continue debugging |
-| `<leader>dr` | Normal | `dapui.open({reset = true})` | Reset DAP UI |
+| `<leader>dB` | Normal | `dap.set_breakpoint(condition)` | Conditional breakpoint |
+| `<leader>dc` | Normal | `dap.continue()` | Continue/start debugging |
+| `<leader>dR` | Normal | `dap.run_last()` | Run last debug config |
 | `<leader>ds` | Normal | `dap.step_over()` | Step over |
 | `<leader>di` | Normal | `dap.step_into()` | Step into |
 | `<leader>do` | Normal | `dap.step_out()` | Step out |
+| `<leader>dr` | Normal | `dap.repl.open()` | Open DAP REPL |
+| `<leader>dl` | Normal | `dap.list_breakpoints()` | List breakpoints |
+| `<leader>de` | Normal | `dap.set_exception_breakpoints()` | Break on exceptions |
+| `<leader>dx` | Normal | `dap.clear_breakpoints()` | Clear all breakpoints |
+| `<leader>dq` | Normal | `dap.terminate()` | Terminate debug session |
 
 ---
 

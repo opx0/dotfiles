@@ -1,8 +1,14 @@
---> Fonts
+--> Fonts (active set — installed by package manager)
+# Keep this list lean. Each installed font slows fontconfig and app startup.
+# Add more only when you wire them into a config (kitty/ghostty/wezterm/nvim).
 ttf-jetbrains-mono-nerd
 ttf-nerd-fonts-symbols
 ttf-nerd-fonts-symbols-mono
 noto-fonts
+
+--> Fonts (paid / proprietary)
+# Not packageable. Live at /usr/local/share/fonts/personal/ (system-wide).
+# Restore from private backup with: scripts/install-fonts.sh [BACKUP_DIR]
 
 --> General Linux Utilities
 brightnessctl

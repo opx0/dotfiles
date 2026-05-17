@@ -1,8 +1,17 @@
 font-size = 13
-background-blur-radius = 20
 mouse-hide-while-typing = true
 window-decoration = true
-# keybind = global:cmd+/=toggle_quick_terminal
-# background-opacity = 0.7
-# background-blur-radius = 20
+window-show-tab-bar = never
+confirm-close-surface = false
+gtk-single-instance = true
+linux-cgroup = single-instance
+shell-integration-features = no-cursor,no-sudo,no-title
+background-opacity = 1
+background-blur = false
+keybind = global:ctrl+grave_accent=toggle_quick_terminal
+quick-terminal-position = top
+quick-terminal-animation-duration = 0
 theme = "Catppuccin Mocha"
+background = 11111b
+window-inherit-working-directory = false
+tab-inherit-working-directory = true

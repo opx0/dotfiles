@@ -6,7 +6,7 @@ nodejs
 pnpm-bin
 
 --> Editors & IDEs
-visual-studio-code-bin
+#visual-studio-code-bin
 neovim
 visual-studio-code-insiders-bin
 zed
@@ -35,7 +35,6 @@ discord
 
 --> Productivity & Utilities
 obsidian
-libreoffice-fresh-en-gb
 localsend-bin
 syncthing
 

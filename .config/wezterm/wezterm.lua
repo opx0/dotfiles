@@ -69,5 +69,6 @@ config.window_padding = {
   top = 1,
   bottom = 0,
 }
-
+local icon = wezterm.nerdfonts.dev_git_branch   --
+local icon2 = wezterm.nerdfonts.fa_terminal
 return config

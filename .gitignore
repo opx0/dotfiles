@@ -123,3 +123,6 @@ bin/local/
 
 # Any files ending with .local (for local overrides)
 *.local.*
+
+# Claude Code state lives at ~/.claude/ and is intentionally not versioned.
+.claude/
