@@ -133,3 +133,7 @@ zinit wait'1' lucid as'null' id-as'dev-cli-init' \
 export JAVA_HOME=/usr/lib/jvm/default
 export PATH="$JAVA_HOME/bin:$PATH"
 export PATH="$HOME/.npm-global/bin:$PATH"
+
+
+# Added by Antigravity CLI installer
+export PATH="/home/opx/.local/bin:$PATH"

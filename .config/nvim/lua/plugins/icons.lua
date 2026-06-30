@@ -2,9 +2,7 @@ return {
   {
     "echasnovski/mini.icons",
     lazy = true,
-    opts = function()
-      return require("mini.icons").setup() -- Use default setup
-    end,
+    opts = {},
     init = function()
       -- Set global variable for other plugins to use
       vim.g.have_mini_icons = true

@@ -52,27 +52,37 @@ return {
     end
   },
 
-  -- Mini.nvim collection
-  {
-    'echasnovski/mini.nvim',
-    version = false,
-    config = function()
-      -- Mini.ai for better text objects
-      require('mini.ai').setup()
+	-- Mini.nvim collection
+	{
+		'echasnovski/mini.nvim',
+		version = false,
+		config = function()
+			-- Mini.ai for better text objects
+			require('mini.ai').setup()
 
-      -- Mini.surround for surrounding text objects
-      require('mini.surround').setup()
+			-- Mini.surround for surrounding text objects
+			require('mini.surround').setup()
 
-      -- Mini.pairs for auto-pairing
-      require('mini.pairs').setup()
+			-- NOTE: autopairs is handled by nvim-autopairs (cmp.lua) and comments
+			-- by Comment.nvim (comment.lua); mini.pairs/mini.comment removed to
+			-- avoid two plugins fighting over the same keys.
 
-      -- Mini.comment for commenting
-      require('mini.comment').setup()
+			-- Mini.indentscope for indent guides
+			require('mini.indentscope').setup()
 
-      -- Mini.indentscope for indent guides
-      require('mini.indentscope').setup()
-    end
-  },
+			-- Window zoom toggle (<C-w>z)
+			local zoomed = false
+			vim.keymap.set("n", "<C-w>z", function()
+				if zoomed then
+					vim.cmd("wincmd =")
+					zoomed = false
+				else
+					vim.cmd("wincmd _ | wincmd |")
+					zoomed = true
+				end
+			end, { desc = "Toggle zoom" })
+		end
+	},
 
   -- Session management
   {

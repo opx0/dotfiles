@@ -12,7 +12,7 @@ return {
       sections = {
         lualine_x = {
           function()
-            return vim.loop.os_uname().sysname == "Linux" and "󰣇" or "󰌽"
+            return vim.uv.os_uname().sysname == "Linux" and "󰣇" or "󰌽"
           end,
         },
       },

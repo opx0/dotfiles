@@ -15,15 +15,12 @@ if not vim.uv.fs_stat(lazypath) then
 	})
 end
 
-vim.g.lua_snippets_path = vim.fn.stdpath("config") .. "/lua/snippets/"
-vim.cmd("au BufRead,BufNewFile *.templ setfiletype templ")
 local autocmd = vim.api.nvim_create_autocmd
 
 vim.api.nvim_create_autocmd({ "BufEnter", "BufNewFile" }, {
 	pattern = { "*.templ" },
 	callback = function()
-		local buf = vim.api.nvim_get_current_buf()
-		vim.api.nvim_buf_set_option(buf, "filetype", "templ")
+		vim.bo[vim.api.nvim_get_current_buf()].filetype = "templ"
 	end,
 })
 
@@ -77,29 +74,29 @@ vim.o.termguicolors = true
 vim.o.conceallevel = 2
 
 -- Add quick escape mapping
-vim.api.nvim_set_keymap("i", "jj", "<Esc>", {noremap = false})
+vim.keymap.set("i", "jj", "<Esc>", { desc = "Quick escape" })
 
 -- Basic navigation improvements
-vim.api.nvim_set_keymap("n", "E", "$", {noremap = false})
-vim.api.nvim_set_keymap("n", "B", "^", {noremap = false})
+vim.keymap.set("n", "E", "$", { desc = "Go to end of line" })
+vim.keymap.set("n", "B", "^", { desc = "Go to beginning of line" })
 
 -- Clear search highlighting
 vim.keymap.set('n', '<leader>h', '<cmd>nohlsearch<CR>', { desc = 'Clear search highlight' })
 
 -- Better split resizing
-vim.api.nvim_set_keymap("n", "<C-W>,", ":vertical resize -10<CR>", {noremap = true})
-vim.api.nvim_set_keymap("n", "<C-W>.", ":vertical resize +10<CR>", {noremap = true})
+vim.keymap.set("n", "<C-W>,", ":vertical resize -10<CR>", { desc = "Decrease window width" })
+vim.keymap.set("n", "<C-W>.", ":vertical resize +10<CR>", { desc = "Increase window width" })
 
 -- Quick save and quit
-vim.api.nvim_set_keymap("n", "QQ", ":q!<enter>", {noremap = false})
-vim.api.nvim_set_keymap("n", "WW", ":w!<enter>", {noremap = false})
+vim.keymap.set("n", "QQ", ":q!<CR>", { desc = "Force quit" })
+vim.keymap.set("n", "WW", ":w!<CR>", { desc = "Force write" })
 
 -- Buffer navigation
-vim.api.nvim_set_keymap("n", "tk", ":blast<enter>", {noremap = false})
-vim.api.nvim_set_keymap("n", "tj", ":bfirst<enter>", {noremap = false})
-vim.api.nvim_set_keymap("n", "th", ":bprev<enter>", {noremap = false})
-vim.api.nvim_set_keymap("n", "tl", ":bnext<enter>", {noremap = false})
-vim.api.nvim_set_keymap("n", "td", ":bdelete<enter>", {noremap = false})
+vim.keymap.set("n", "tk", ":blast<CR>", { desc = "Go to last buffer" })
+vim.keymap.set("n", "tj", ":bfirst<CR>", { desc = "Go to first buffer" })
+vim.keymap.set("n", "th", ":bprev<CR>", { desc = "Go to previous buffer" })
+vim.keymap.set("n", "tl", ":bnext<CR>", { desc = "Go to next buffer" })
+vim.keymap.set("n", "td", ":bdelete<CR>", { desc = "Delete buffer" })
 
 -- Better word wrap navigation
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })

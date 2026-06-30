@@ -39,13 +39,12 @@ return {
 				integrations = {
 					cmp = true,
 					gitsigns = true,
-					nvimtree = true,
 					notify = true,
 					mini = true,
 					telescope = {
 						enabled = true,
 					},
-					harpoon = true,
+					neotree = true,
 					mason = true,
 					noice = true,
 					which_key = true,

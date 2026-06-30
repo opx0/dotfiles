@@ -41,8 +41,8 @@ return {
         },
       })
 
-      -- Keymap to dismiss notifications
-      vim.keymap.set("n", "<leader>nn", ":Noice dismiss<CR>", {
+      -- Keymap to dismiss notifications (<leader>nn is ObsidianNew; see obsidian.lua)
+      vim.keymap.set("n", "<leader>nd", ":Noice dismiss<CR>", {
         noremap = true,
         desc = "Dismiss Noice notifications"
       })

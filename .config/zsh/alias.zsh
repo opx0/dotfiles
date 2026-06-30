@@ -60,3 +60,11 @@ alias aj21p='magick *.jpg output.pdf'  # all jpg to pdf
 
 #zed-cli
 alias zed="zeditor"
+
+# MemPalace — see ~/.local/share/mempalace/mp wrapper
+alias mps='mp search'                                    # mps "query" [--wing X] [--hall Y]
+alias mph='mp stats'                                     # health check (row count + breakdown)
+alias mpd='mp doctor'                                    # verify install
+mpr() {  # full refresh: pull new transcripts, write markdown, rebuild graph hubs
+  mp ingest && mp export && python3 ~/.local/share/mempalace/build-mem-index.py
+}

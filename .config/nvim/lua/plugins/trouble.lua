@@ -15,7 +15,6 @@ return {
   -- Better diagnostics
   {
     "folke/trouble.nvim",
-    lazy = false,
     cmd = { "Trouble", "TroubleToggle" },
     keys = {
       {

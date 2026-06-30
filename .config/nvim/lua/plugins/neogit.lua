@@ -1,7 +1,12 @@
 return {
   {
     "NeogitOrg/neogit",
-    lazy = false,
+    keys = {
+      { "<leader>gs", "<cmd>Neogit<cr>", desc = "Open Neogit" },
+      { "<leader>gc", "<cmd>Neogit commit<cr>", desc = "Git commit" },
+      { "<leader>gp", "<cmd>Neogit push<cr>", desc = "Git push" },
+      { "<leader>gL", "<cmd>Neogit log<cr>", desc = "Git log (Neogit)" },
+    },
     dependencies = {
       "nvim-lua/plenary.nvim",         -- required
       "sindrets/diffview.nvim",        -- optional - Diff integration
@@ -9,12 +14,6 @@ return {
     },
     config = function()
       require('neogit').setup()
-
-      -- Keymaps
-      vim.keymap.set("n", "<leader>gs", "<cmd>Neogit<cr>", { desc = "Open Neogit" })
-      vim.keymap.set("n", "<leader>gc", "<cmd>Neogit commit<cr>", { desc = "Git commit" })
-      vim.keymap.set("n", "<leader>gp", "<cmd>Neogit push<cr>", { desc = "Git push" })
-      vim.keymap.set("n", "<leader>gl", "<cmd>Neogit log<cr>", { desc = "Git log" })
     end
   },
 

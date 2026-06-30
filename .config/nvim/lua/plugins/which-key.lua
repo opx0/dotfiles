@@ -21,7 +21,8 @@ return {
 				{ "<leader>gs", desc = "Git Status (Neogit)" },
 				{ "<leader>gc", desc = "Git Commit" },
 				{ "<leader>gp", desc = "Git Push" },
-				{ "<leader>gl", desc = "Git Log" },
+				{ "<leader>gl", desc = "Lazygit Log" },
+				{ "<leader>gL", desc = "Git Log (Neogit)" },
 				{ "<leader>gb", desc = "Git Blame Line" },
 				{ "<leader>gB", desc = "Git Browse" },
 				{ "<leader>gf", desc = "Git File History" },
@@ -42,11 +43,8 @@ return {
 				{ "<leader>dx", desc = "Clear Breakpoints" },
 				{ "<leader>dq", desc = "Terminate Session" },
 
-				-- Harpoon
-				{ "<leader>h", group = "Harpoon" },
-				{ "<leader>m", desc = "Add File to Harpoon" },
-				{ "<leader>ht", desc = "Toggle Harpoon Menu" },
-				{ "<leader>sh", desc = "Search Harpoon Files" },
+				-- File navigation
+				{ "<leader>e", desc = "File Explorer" },
 
 				-- LSP operations
 				{ "<leader>c", group = "Code" },
@@ -73,8 +71,12 @@ return {
 				-- Other
 				{ "<leader>z", desc = "Toggle Zen Mode" },
 				{ "<leader>qq", desc = "Quit" },
+
+				-- Buffer
+				{ "<leader>b", group = "Buffer" },
 				{ "<leader>bd", desc = "Delete Buffer" },
-				{ "<leader>nn", desc = "Dismiss Noice" },
+				{ "<leader>nn", desc = "Obsidian New Note" },
+				{ "<leader>nd", desc = "Dismiss Noice" },
 				{ "<leader>N", desc = "Neovim News" },
 				{ "<leader>ch", desc = "Toggle Checkbox" },
 
@@ -92,6 +94,20 @@ return {
 				-- Todo navigation
 				{ "]t", desc = "Next Todo" },
 				{ "[t", desc = "Previous Todo" },
+
+				-- LeetCode operations
+				{ "<leader>l", group = "LeetCode" },
+				{ "<leader>ll", desc = "LeetCode List" },
+				{ "<leader>lt", desc = "LeetCode Test" },
+				{ "<leader>ls", desc = "LeetCode Submit" },
+				{ "<leader>lr", desc = "LeetCode Run" },
+				{ "<leader>ld", desc = "LeetCode Description" },
+
+				-- Format
+				{ "<leader>cF", desc = "Format Buffer" },
+
+				-- Undo tree
+				{ "<leader>ut", desc = "Toggle Undo Tree" },
 			})
 		end,
 	},

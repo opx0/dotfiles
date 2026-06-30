@@ -96,7 +96,7 @@ return {
       vim.api.nvim_create_autocmd("FileType", {
         pattern = "markdown",
         callback = function()
-          vim.cmd("call pencil#init({'wrap': 'soft'})")
+          vim.fn["pencil#init"]({ wrap = "soft" })
         end,
       })
     end

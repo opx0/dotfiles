@@ -15,7 +15,8 @@ return {
 			vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
 			vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
 			vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-			vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
+			-- <leader>k (not <C-k>) so it doesn't shadow tmux-navigator "move up"
+			vim.keymap.set("n", "<leader>k", vim.lsp.buf.signature_help, opts)
 			vim.keymap.set("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, opts)
 			vim.keymap.set("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, opts)
 			vim.keymap.set("n", "<leader>wl", function()
@@ -25,9 +26,8 @@ return {
 			vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
 			vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
 			vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
-			vim.keymap.set("n", "<leader>f", function()
-				vim.lsp.buf.format({ async = true })
-			end, opts)
+			-- Formatting handled by conform (<leader>cF + format-on-save); no <leader>f here
+			-- (it shadowed the <leader>f Find prefix).
 
 			-- Highlight references of the word under the cursor
 			if client.server_capabilities.documentHighlightProvider then
@@ -50,6 +50,8 @@ return {
 				cmd = { "lua-language-server" },
 				filetypes = { "lua" },
 				root_markers = { ".luarc.json", ".luarc.jsonc", ".luacheckrc", ".stylua.toml", "stylua.toml", "selene.toml", "selene.yml", ".git" },
+				on_attach = on_attach,
+				capabilities = capabilities,
 				settings = {
 					Lua = {
 						diagnostics = {
@@ -80,12 +82,15 @@ return {
 				cmd = { "typescript-language-server", "--stdio" },
 				filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
 				root_markers = { "tsconfig.json", "jsconfig.json", "package.json", ".git" },
+				on_attach = on_attach,
+				capabilities = capabilities,
 			}
 
 			vim.lsp.config.html = {
 				cmd = { "vscode-html-language-server", "--stdio" },
 				filetypes = { "html" },
 				root_markers = { "package.json", ".git" },
+				on_attach = on_attach,
 				capabilities = capabilities,
 			}
 
@@ -93,6 +98,7 @@ return {
 				cmd = { "htmx-lsp" },
 				filetypes = { "html", "templ" },
 				root_markers = { ".git" },
+				on_attach = on_attach,
 				capabilities = capabilities,
 			}
 
