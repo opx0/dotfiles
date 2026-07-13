@@ -3,7 +3,6 @@ return {
     "epwalsh/obsidian.nvim",
     version = "*",
     lazy = true,
-    -- LOAD ON: Markdown files OR these specific commands/keys
     event = {
       "BufReadPre " .. vim.fn.expand "~" .. "/Documents/Notes/**.md",
       "BufNewFile " .. vim.fn.expand "~" .. "/Documents/Notes/**.md",
@@ -15,7 +14,6 @@ return {
       "ObsidianToday",
       "ObsidianOpen",
     },
-    -- KEY SHORTCUTS (Global Access)
     keys = {
       { "<leader>on", "<cmd>ObsidianQuickSwitch<CR>", desc = "Obsidian: Quick Switcher" },
       { "<leader>os", "<cmd>ObsidianSearch<CR>", desc = "Obsidian: Search Text" },
@@ -31,7 +29,7 @@ return {
         workspaces = {
           {
             name = "Notes",
-            path = "/home/opx/Archive/IIBrain/Inbox/NOtes/",
+            path = "/home/opx/Archive/MSB",
           },
         },
         note_id_func = function(title)
@@ -52,7 +50,6 @@ return {
             end,
             opts = { buffer = true, desc = "Toggle checkbox" },
           },
-          -- Smart Enter: Follow link or create new line
           ["<cr>"] = {
             action = function()
               if require("obsidian").util.cursor_on_markdown_link() then
@@ -68,7 +65,6 @@ return {
     end
   },
 
-  -- Markdown Preview
   {
     "iamcco/markdown-preview.nvim",
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },

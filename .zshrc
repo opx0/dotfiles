@@ -8,7 +8,6 @@ esac
 # --- 1. Path & Zinit Setup ---
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
-
 if [ ! -d "$ZINIT_HOME" ]; then
    mkdir -p "$(dirname $ZINIT_HOME)"
    git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
@@ -133,7 +132,6 @@ zinit wait'1' lucid as'null' id-as'dev-cli-init' \
 export JAVA_HOME=/usr/lib/jvm/default
 export PATH="$JAVA_HOME/bin:$PATH"
 export PATH="$HOME/.npm-global/bin:$PATH"
-
 
 # Added by Antigravity CLI installer
 export PATH="/home/opx/.local/bin:$PATH"

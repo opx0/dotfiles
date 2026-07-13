@@ -14,8 +14,6 @@ return {
     },
     opts = {
       notify_on_error = true,
-      -- Run the first AVAILABLE formatter per filetype (replaces the old, now
-      -- removed, nested `{ { "a", "b" } }` syntax).
       stop_after_first = true,
       format_on_save = {
         timeout_ms = 1000,
