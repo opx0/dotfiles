@@ -1,6 +1,7 @@
 .git
 scripts
 README.md
+bootstrap.sh
 --target=~/.config
 --ignore=.stowrc
 --ignore=DS_Store

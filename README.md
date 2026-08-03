@@ -1,64 +1,63 @@
 # My dotfiles
 
-This directory contains the dotfiles for my system
+Arch Linux. zsh + tmux + Neovim, symlinked with GNU stow.
 
-## Requirements
-
-Ensure you have the following installed on your system
-
-### Git
+## Setup
 
 ```sh
-pacman -S git
+git clone https://github.com/aura-zero/dotfiles.git ~/dotfiles
+cd ~/dotfiles && ./bootstrap.sh
 ```
 
-### Stow
+That's the whole thing. It's safe to re-run — every step checks before it acts.
+
+If stow reports conflicts with config files already on the machine:
 
 ```sh
-pacman -S stow
+./bootstrap.sh --adopt   # pulls those files INTO the repo — check `git diff` after
 ```
 
-## Installation
+<details>
+<summary>What bootstrap.sh does</summary>
 
-First, check out the dotfiles repo in your $HOME directory using git
+| Step | Detail |
+|---|---|
+| Base tools | `git`, `stow`, `base-devel` |
+| AUR helper | builds `yay-bin` if `yay` is missing |
+| Packages | everything in `scripts/{pkgs,devTools,sysPkgs}.txt` — repo packages via pacman, the rest via yay |
+| Symlinks | `stow` into `$HOME` |
+| tmux | clones TPM, installs plugins headlessly (no `prefix + I` needed) |
+| zsh | clones zinit, bursts the turbo-loaded plugins |
+| Neovim | `lazy.nvim` self-bootstraps, then a headless `Lazy! sync` |
+| Login shell | `chsh` to zsh |
 
-```sh
-git clone https://github.com/aura-zero/dotfiles.git
-cd dotfiles
-```
+Flags: `--adopt`, `--skip-packages`, `--help`.
 
-then use GNU stow to create symlinks
+</details>
 
-```sh
-stow .
-```
+Left to you afterwards, because they need your credentials or a private backup:
 
-**if you encounter some error in `stow .` then run**
+- **atuin sync** — `atuin register` / `atuin login`. History works locally without it.
+- **paid fonts** — restore into `/usr/local/share/fonts/personal/`.
+- **log out and back in** — for the zsh login shell to take effect.
 
-```sh
-stow --adopt .
-```
+## What's in here
 
-## System Setup with usefull packages
+| Path | |
+|---|---|
+| [`.config/nvim`](.config/nvim/README.md) | Neovim — plugins, LSP, [keybindings](.config/nvim/KEYBINDINGS.md) |
+| [`.config/tmux`](.config/tmux/README.md) | tmux — keybindings, themes, per-host overrides |
+| [`.config/zsh`](.config/zsh) | zsh modules, sourced by `.zshrc` |
+| [`scripts`](scripts/README.md) | the package lists bootstrap reads |
+| `.config/starship` | prompt |
+| `.config/{ghostty,kitty,wezterm}` | terminal emulators |
 
-Installation of packages for development and general purpose use
+Those READMEs are reference — how things are configured and which keys do what. Setup lives here and only here.
 
-```sh
-cd dotfiles/scripts
-bash install.sh
-```
+## Housekeeping
 
-## Making your shell magical with atuin
-
-Sync, search and backup shell history with Atuin
-
-```sh
-curl --proto '=https' --tlsv1.2 -LsSf https://setup.atuin.sh | sh
-```
-
-> to add symlinks to gitignore
+Symlinks created by stow shouldn't be committed:
 
 ```zsh
-#find . -type l | sed -e s'/^\.\///g' >> .gitignore
 find . -type l -exec git rm --cached {} \;
 ```

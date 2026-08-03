@@ -13,37 +13,22 @@ tmux/
     └── tokyo-night.conf   # tokyo-night theme + status modules
 ```
 
-## Install
-
-One-shot:
-```bash
-./install.sh
-```
-
-This symlinks the directory to `~/.config/tmux/`, clones TPM, checks your tmux version, and warns about missing optional deps.
-
-Then in tmux: `prefix + I` to install plugins (prefix is `Ctrl+A`), `prefix + R` to reload.
-
-<details>
-<summary>Manual install</summary>
-
-```bash
-ln -s "$PWD" ~/.config/tmux
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-tmux         # then: prefix + I, then: prefix + R
-```
-</details>
+> Setup is handled by [`../../bootstrap.sh`](../../README.md#setup) — symlinks, TPM,
+> and plugin install. Nothing here needs running by hand, not even `prefix + I`.
+> `prefix + R` reloads after you edit a config.
 
 ## Dependencies
 
-| Tool | Required by | Install |
-|---|---|---|
-| tmux ≥ 3.2 | catppuccin v2 theme | distro package or build |
-| `fzf` | sessionx, fzf-url | `pacman -S fzf` / `apt install fzf` |
-| `zoxide` | sessionx (zoxide-mode) | `pacman -S zoxide` / `apt install zoxide` |
-| Ruby + thumbs binary | tmux-thumbs hint mode | built by the plugin on first run |
+| Tool | Required by |
+|---|---|
+| tmux ≥ 3.2 | catppuccin v2 theme |
+| `fzf` | sessionx, fzf-url |
+| `zoxide` | sessionx (zoxide-mode) |
+| Ruby + thumbs binary | tmux-thumbs hint mode (built by the plugin on first run) |
 
-If a dependency is missing on a host, the related keybind just errors silently — tmux itself keeps working. Disable the plugin in `~/.tmux.local.conf` if it's noisy.
+All of these come from the package lists, so bootstrap installs them. If one is missing
+on a host, the related keybind just errors silently — tmux itself keeps working. Disable
+the plugin in `~/.tmux.local.conf` if it's noisy.
 
 ## Switching themes
 

@@ -8,7 +8,7 @@ noto-fonts
 
 --> Fonts (paid / proprietary)
 # Not packageable. Live at /usr/local/share/fonts/personal/ (system-wide).
-# Restore from private backup with: scripts/install-fonts.sh [BACKUP_DIR]
+# Restore by hand from your private backup, then run: fc-cache -fv
 
 --> General Linux Utilities
 brightnessctl
