@@ -41,3 +41,15 @@ nwg-look
 --> ...
 libinput-gestures
 ydottool
+
+--> Voice input (voxtype push-to-talk)
+# voxtype-bin is AUR. It pulls ~300MB of CUDA/MIGraphX ONNX runtimes a Vulkan
+# setup never loads -- not optional in the PKGBUILD. Don't build on a small tmpfs.
+voxtype-bin
+# wtype is first in voxtype's driver_order; without it typing falls to ydotool.
+wtype
+wl-clipboard
+libnotify
+vulkan-icd-loader
+# espeak-ng: only needed to self-test transcription (synthesise a known phrase).
+espeak-ng

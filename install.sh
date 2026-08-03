@@ -163,6 +163,40 @@ else
   warn "nvim not installed — skipping"
 fi
 
+# ----------------------------------------------------------------- voxtype --
+step "voxtype (push-to-talk STT)"
+if ! command -v voxtype >/dev/null; then
+  warn "voxtype not installed — skipping (it's in scripts/sysPkgs.txt)"
+else
+  # GPU backend: repoints /usr/bin/voxtype at the Vulkan build.
+  if readlink -f /usr/bin/voxtype | grep -q vulkan; then
+    ok "vulkan backend already active"
+  else
+    sudo voxtype setup gpu --enable >/dev/null && ok "vulkan backend enabled"
+  fi
+
+  # Fetch models BEFORE enabling the service: a partial .bin still declares full
+  # size in its header, so the daemon starts, fails to load it, and crash-loops.
+  model="$(sed -n 's/^model *= *"\(.*\)"/\1/p' "$HOME/.config/voxtype/config.toml" 2>/dev/null | head -1)"
+  model="${model:-large-v3}"
+  models="$HOME/.local/share/voxtype/models"
+  [ -f "$models/ggml-silero-vad.bin" ] && ok "VAD model present" \
+    || { echo "  downloading Silero VAD…"; voxtype setup vad >/dev/null && ok "VAD model fetched"; }
+  [ -f "$models/ggml-${model}.bin" ] && ok "model ${model} present" \
+    || { echo "  downloading ${model} (GBs — be patient)…"
+         voxtype setup --download --model "$model" >/dev/null && ok "model ${model} fetched"; }
+
+  # After stow (reads the symlinked config) and after the model exists.
+  "$DOTFILES/scripts/voxtype-gpu-pin.sh" || warn "GPU pin failed — see scripts/voxtype-gpu-pin.sh"
+
+  voxtype setup systemd >/dev/null 2>&1 || true
+  systemctl --user daemon-reload
+  systemctl --user enable --now voxtype >/dev/null 2>&1 \
+    && ok "voxtype.service enabled" || warn "could not enable voxtype.service"
+  id -nG | grep -qw input || warn "not in the 'input' group — F8 will never fire.
+     Run: sudo usermod -aG input $USER   (then log out and back in)"
+fi
+
 # ------------------------------------------------------------- login shell --
 step "Login shell"
 zsh_bin="$(command -v zsh || true)"
