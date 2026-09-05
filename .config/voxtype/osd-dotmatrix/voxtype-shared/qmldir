@@ -1,0 +1,11 @@
+# Vendored from /usr/share/voxtype/quickshell/voxtype-shared/ (voxtype-bin, MIT).
+#
+# Only the two components this OSD uses, and only the two that voxtype-bin
+# 1.0.0-2 actually ships. The upstream qmldir also declares StyleLoader and
+# RecipeRenderer, whose .qml files are absent from the package -- importing
+# that directory works today but its own qmlscanner cannot resolve it, so the
+# files are vendored here rather than referenced across the filesystem.
+module voxtype-shared
+
+StateReader 1.0 StateReader.qml
+AudioBridge 1.0 AudioBridge.qml

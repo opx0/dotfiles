@@ -84,7 +84,7 @@ flash_attention = true
 # Options: tiny, tiny.en, base, base.en, small, small.en, medium, medium.en, large-v3, large-v3-turbo
 # .en models are English-only but faster and more accurate for English
 # Or provide absolute path to a custom .bin model file
-model = "large-v3"
+model = "large-v3-turbo"
 
 # Language for transcription
 # Use "en" for English, "auto" for auto-detection
@@ -194,7 +194,7 @@ on_recording_start = false
 on_recording_stop = false
 
 # Show notification with transcribed text after transcription completes
-on_transcription = true
+on_transcription = false
 
 # [output.post_process]
 # Pipe transcribed text through an external command for cleanup before output.
@@ -248,3 +248,16 @@ backend = "whisper"
 threshold = 0.5
 min_speech_duration_ms = 100
 
+
+[osd]
+# Monochrome dot-matrix LED panel, from .config/voxtype/osd-dotmatrix/shell.qml.
+#
+# gtk4 (the default) hardcodes its blue waveform -- its only knobs are size,
+# margin and gain -- so a restyle has to go through the quickshell frontend.
+#
+# The [osd] style/palette/plugin_path/visual.layers options documented in
+# /etc/voxtype/config.toml are all dead on voxtype-bin 1.0.0-2: StyleLoader.qml,
+# the component that reads them, is declared in the package's qmldir but not
+# shipped. The QML path is therefore set by VOXTYPE_OSD_QML_PATH in the
+# 30-osd.conf systemd drop-in that install.sh generates, not by plugin_path.
+frontend = "quickshell"

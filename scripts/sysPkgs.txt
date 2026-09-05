@@ -40,16 +40,29 @@ nwg-look
 
 --> ...
 libinput-gestures
-ydottool
+ydotool
 
 --> Voice input (voxtype push-to-talk)
 # voxtype-bin is AUR. It pulls ~300MB of CUDA/MIGraphX ONNX runtimes a Vulkan
 # setup never loads -- not optional in the PKGBUILD. Don't build on a small tmpfs.
 voxtype-bin
+# ffmpeg: voxtype-gpu-pin.sh builds a silent probe clip with it and dies
+# without it -- install.sh only warns, so the pin silently never happens and
+# whisper runs on the iGPU. It was only ever present here as an mpv/vlc dep.
+ffmpeg
 # wtype is first in voxtype's driver_order; without it typing falls to ydotool.
 wtype
 wl-clipboard
 libnotify
 vulkan-icd-loader
+# quickshell: the OSD frontend. voxtype's default gtk4 OSD hardcodes its blue
+# waveform, so the dot-matrix panel in .config/voxtype/osd-dotmatrix needs this.
+# Without it the daemon runs fine but shows nothing on screen.
+quickshell-git
+# NVIDIA: without these the dGPU sits on nouveau with no Vulkan device, and
+# voxtype-gpu-pin.sh honestly pins the iGPU (12x slower). Needs a reboot after.
+nvidia-open-dkms
+nvidia-utils
+egl-wayland
 # espeak-ng: only needed to self-test transcription (synthesise a known phrase).
 espeak-ng

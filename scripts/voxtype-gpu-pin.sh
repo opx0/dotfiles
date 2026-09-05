@@ -53,6 +53,15 @@ ENUM=$(env -u GGML_VK_VISIBLE_DEVICES voxtype -c "$TMP/probe.toml" \
 [ -n "$ENUM" ] || die "could not enumerate Vulkan devices"
 echo "$ENUM" | sed 's/^/     /'
 
+# Fresh install: nvidia-utils is on disk but nouveau still owns the card until a
+# reboot, so Vulkan lists only the iGPU. Pinning that would "succeed" 12x slow.
+# Keep any existing pin and bail; install.sh re-runs this after the reboot.
+if lspci -k 2>/dev/null | grep -A2 -iE 'VGA|3D' | grep -qE 'driver in use: nouveau' \
+   && ! echo "$ENUM" | grep -q NVIDIA; then
+  warn "NVIDIA card is on nouveau — driver not loaded yet. Reboot, then re-run this script."
+  exit 0
+fi
+
 IDX=$(echo "$ENUM" | awk -F'[:=]' '
   { idx=$2+0; line=$0; score=0
     if (line ~ /llvmpipe/)               score-=100
@@ -77,12 +86,14 @@ ok "pinned ggml device $IDX: $NAME"
 echo "$ENUM" | grep -qE "^ggml_vulkan: $IDX .*matrix cores: none" \
   && warn "chosen device has no matrix cores — no dGPU here? expect slow transcription"
 
-# large-v3 needs ~3.1GB resident. Warn rather than switch: the model is a
-# committed preference, and silently downgrading it would hide the problem.
+# large-v3 is 3.1GB resident and voxtype >=1.0.0 allocates two whisper states
+# per utterance (~600MB): on a 4GB card every transcription dies with
+# ErrorOutOfDeviceMemory while the daemon reports healthy. Warn, don't switch:
+# the model is a committed preference and a silent downgrade hides the problem.
 if command -v nvidia-smi >/dev/null && [ "$MODEL" = "large-v3" ]; then
   TOTAL=$(nvidia-smi --query-gpu=memory.total --format=csv,noheader,nounits | head -1)
-  [ "${TOTAL:-0}" -lt 3600 ] 2>/dev/null \
-    && warn "only ${TOTAL}MiB VRAM; large-v3 needs ~3100MiB. Consider large-v3-turbo."
+  [ "${TOTAL:-0}" -lt 4200 ] 2>/dev/null \
+    && warn "only ${TOTAL}MiB VRAM; large-v3 OOMs at transcribe time here. Use large-v3-turbo."
 fi
 
 systemctl --user daemon-reload 2>/dev/null || true
