@@ -4,17 +4,20 @@ npm
 bun
 nodejs
 pnpm-bin
+# .config/zsh/devBox.zsh lazy-loads this on first use of node/npm/pnpm/yarn
+nvm
 
 --> Editors & IDEs
-#visual-studio-code-bin
 neovim
-visual-studio-code-insiders-bin
+visual-studio-code-bin
 zed
 --> Container & Cloud
 docker
 minikube
 kubectl
 lazydocker
+# ships kubectx AND kubens -- .config/zsh/k8s.zsh aliases them to kc/kns
+kubectx
 
 --> API & Database Tools
 postman-bin
@@ -44,3 +47,7 @@ uv
 --> AI Stuff
 opencode-bin
 antigravity
+
+--> Version Control
+# `gh` -- used by the opencode ship skill (.config/opencode/skills/ship)
+github-cli

@@ -1,16 +1,18 @@
-	return {
+return {
 	ensure_installed = {
 		"lua-language-server",
-		"stylua",
+		"gopls",
 		"typescript-language-server",
 		"html-lsp",
 		"tailwindcss-language-server",
 		"htmx-lsp",
-		"nil",
-		"alejandra",
-		"goimports_reviser",
-		"golines",
+		"stylua",
+		"goimports",
+		"gofumpt",
+		"prettierd",
 		"ruff",
-		"tree-sitter-cli", -- required by nvim-treesitter (main) to compile parsers
+		"alejandra",
+		"templ",
+		"tree-sitter-cli",
 	},
 }

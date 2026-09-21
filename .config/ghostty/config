@@ -13,10 +13,13 @@ linux-cgroup = single-instance
 shell-integration-features = no-cursor,no-sudo,no-title
 background-opacity = 1
 background-blur = false
+
+custom-shader = shaders/space.glsl
+custom-shader = shaders/cursor_blaze.glsl
+custom-shader-animation = true
 keybind = global:ctrl+grave_accent=toggle_quick_terminal
 quick-terminal-position = top
 quick-terminal-animation-duration = 0
-theme = "Catppuccin Mocha"
-background = 11111b
+theme = Catppuccin Mocha
 window-inherit-working-directory = false
 tab-inherit-working-directory = true

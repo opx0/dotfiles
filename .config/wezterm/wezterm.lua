@@ -34,7 +34,7 @@ else
 end
 
 -- Window and display settings
-config.enable_wayland = false
+config.enable_wayland = true
 config.adjust_window_size_when_changing_font_size = true
 config.max_fps = 120
 config.animation_fps = 1
@@ -42,7 +42,7 @@ config.window_background_opacity = 1.0
 config.window_decorations = 'NONE'
 
 -- Appearance
-config.color_scheme = 'Tokyo Night'
+config.color_scheme = 'Catppuccin Mocha'
 config.enable_tab_bar = false
 
 -- Font configuration
@@ -69,6 +69,17 @@ config.window_padding = {
   top = 1,
   bottom = 0,
 }
-local icon = wezterm.nerdfonts.dev_git_branch   --
-local icon2 = wezterm.nerdfonts.fa_terminal
+config.keys = {
+  { key = "'", mods = 'CTRL', action = wezterm.action.ClearScrollback 'ScrollbackAndViewport' },
+  { key = 'q', mods = 'CTRL', action = wezterm.action.ToggleFullScreen },
+}
+
+config.mouse_bindings = {
+  {
+    event = { Up = { streak = 1, button = 'Left' } },
+    mods = 'CTRL',
+    action = wezterm.action.OpenLinkAtMouseCursor,
+  },
+}
+
 return config

@@ -7,7 +7,6 @@ return {
     config = function()
       require("todo-comments").setup()
 
-      -- Keymaps
       vim.keymap.set("n", "]t", function()
         require("todo-comments").jump_next()
       end, { desc = "Next todo comment" })
@@ -23,12 +22,18 @@ return {
   -- Goto preview for definitions/references
   {
     'rmagatti/goto-preview',
-    config = function()
-      require('goto-preview').setup {
+    keys = {
+      { "gpd", function() require("goto-preview").goto_preview_definition() end, desc = "Preview definition" },
+      { "gpr", function() require("goto-preview").goto_preview_references() end, desc = "Preview references" },
+      { "gpi", function() require("goto-preview").goto_preview_implementation() end, desc = "Preview implementation" },
+      { "gP", function() require("goto-preview").close_all_win() end, desc = "Close all preview windows" },
+    },
+    opts = function()
+      return {
         width = 120,
         height = 15,
-        border = {"↖", "─" ,"┐", "│", "┘", "─", "└", "│"},
-        default_mappings = true,
+        border = { "↖", "─", "┐", "│", "┘", "─", "└", "│" },
+        default_mappings = false,
         debug = false,
         opacity = nil,
         resizing_mappings = false,
@@ -43,46 +48,36 @@ return {
         stack_floating_preview_windows = true,
         preview_window_title = { enable = true, position = "left" },
       }
-
-      -- Keymaps
-      vim.keymap.set("n", "gpd", "<cmd>lua require('goto-preview').goto_preview_definition()<CR>", { desc = "Preview definition" })
-      vim.keymap.set("n", "gpr", "<cmd>lua require('goto-preview').goto_preview_references()<CR>", { desc = "Preview references" })
-      vim.keymap.set("n", "gpi", "<cmd>lua require('goto-preview').goto_preview_implementation()<CR>", { desc = "Preview implementation" })
-      vim.keymap.set("n", "gP", "<cmd>lua require('goto-preview').close_all_win()<CR>", { desc = "Close all preview windows" })
-    end
+    end,
   },
 
-	-- Mini.nvim collection
-	{
-		'echasnovski/mini.nvim',
-		version = false,
-		config = function()
-			-- Mini.ai for better text objects
-			require('mini.ai').setup()
-
-			-- Mini.surround for surrounding text objects
-			require('mini.surround').setup()
-
-			-- NOTE: autopairs is handled by nvim-autopairs (cmp.lua) and comments
-			-- by Comment.nvim (comment.lua); mini.pairs/mini.comment removed to
-			-- avoid two plugins fighting over the same keys.
-
-			-- Mini.indentscope for indent guides
-			require('mini.indentscope').setup()
-
-			-- Window zoom toggle (<C-w>z)
-			local zoomed = false
-			vim.keymap.set("n", "<C-w>z", function()
-				if zoomed then
-					vim.cmd("wincmd =")
-					zoomed = false
-				else
-					vim.cmd("wincmd _ | wincmd |")
-					zoomed = true
-				end
-			end, { desc = "Toggle zoom" })
-		end
-	},
+  {
+    'echasnovski/mini.ai',
+    event = { "BufReadPre", "BufNewFile" },
+    opts = {},
+  },
+  {
+    'echasnovski/mini.surround',
+    keys = { "gsa", "gsd", "gsr", "gsf", "gsF", "gsh", "gsn", { "gsa", mode = "v" } },
+    opts = {
+      mappings = {
+        add = "gsa",
+        delete = "gsd",
+        find = "gsf",
+        find_left = "gsF",
+        highlight = "gsh",
+        replace = "gsr",
+        update_n_lines = "gsn",
+        suffix_last = "l",
+        suffix_next = "n",
+      },
+    },
+  },
+  {
+    'echasnovski/mini.indentscope',
+    event = { "BufReadPre", "BufNewFile" },
+    opts = {},
+  },
 
   -- Session management
   {

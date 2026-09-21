@@ -1,3 +1,6 @@
+-- prettierd first, prettier as the fallback -- run one, not both.
+local prettier = { "prettierd", "prettier", stop_after_first = true }
+
 return {
   {
     "stevearc/conform.nvim",
@@ -14,26 +17,26 @@ return {
     },
     opts = {
       notify_on_error = true,
-      stop_after_first = true,
       format_on_save = {
         timeout_ms = 1000,
         lsp_format = "fallback",
       },
       formatters_by_ft = {
         lua = { "stylua" },
+        -- Both, in order: goimports fixes imports, then gofumpt restyles.
         go = { "goimports", "gofumpt" },
-        javascript = { "prettierd", "prettier" },
-        typescript = { "prettierd", "prettier" },
-        javascriptreact = { "prettierd", "prettier" },
-        typescriptreact = { "prettierd", "prettier" },
         python = { "ruff_format" },
         nix = { "alejandra" },
-        html = { "prettierd", "prettier" },
-        css = { "prettierd", "prettier" },
-        json = { "prettierd", "prettier" },
-        yaml = { "prettierd", "prettier" },
-        markdown = { "prettierd", "prettier" },
         templ = { "templ" },
+        javascript = prettier,
+        typescript = prettier,
+        javascriptreact = prettier,
+        typescriptreact = prettier,
+        html = prettier,
+        css = prettier,
+        json = prettier,
+        yaml = prettier,
+        markdown = prettier,
       },
     },
   },

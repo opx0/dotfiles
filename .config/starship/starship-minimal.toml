@@ -11,9 +11,6 @@ success_symbol = '[❯](bold green)'
 error_symbol = '[❯](bold red)'
 vicmd_symbol = '[❮](bold yellow)'
 
-[directory.substitutions]
-'~/tests/starship-custom' = 'work-project'
-
 [directory]
 style = "bold lavender"
 truncation_length = 3

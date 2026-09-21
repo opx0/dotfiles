@@ -1,5 +1,5 @@
 # Java
-export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
+export JAVA_HOME=/usr/lib/jvm/default
 export PATH=$JAVA_HOME/bin:$PATH
 
 # Android SDK

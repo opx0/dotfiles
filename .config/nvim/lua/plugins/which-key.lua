@@ -7,7 +7,6 @@ return {
 			local wk = require("which-key")
 			wk.setup(opts)
 			wk.add({
-				-- File operations
 				{ "<leader>f", group = "Find" },
 				{ "<leader>ff", desc = "Find Files" },
 				{ "<leader>fg", desc = "Live Grep" },
@@ -15,7 +14,6 @@ return {
 				{ "<leader>fh", desc = "Find Help" },
 				{ "<leader>ft", desc = "Find Todos" },
 
-				-- Git operations
 				{ "<leader>g", group = "Git" },
 				{ "<leader>gg", desc = "Lazygit" },
 				{ "<leader>gs", desc = "Git Status (Neogit)" },
@@ -26,8 +24,9 @@ return {
 				{ "<leader>gb", desc = "Git Blame Line" },
 				{ "<leader>gB", desc = "Git Browse" },
 				{ "<leader>gf", desc = "Git File History" },
+				{ "<leader>gw", desc = "Git Worktrees" },
+				{ "<leader>gW", desc = "Create Git Worktree" },
 
-				-- Debug operations
 				{ "<leader>d", group = "Debug" },
 				{ "<leader>dt", desc = "Toggle DAP UI" },
 				{ "<leader>db", desc = "Toggle Breakpoint" },
@@ -43,19 +42,37 @@ return {
 				{ "<leader>dx", desc = "Clear Breakpoints" },
 				{ "<leader>dq", desc = "Terminate Session" },
 
-				-- File navigation
 				{ "<leader>e", desc = "File Explorer" },
 
-				-- LSP operations
 				{ "<leader>c", group = "Code" },
 				{ "<leader>ca", desc = "Code Action" },
 				{ "<leader>cR", desc = "Rename File" },
+				{ "<leader>cF", desc = "Format Buffer" },
+				{ "<leader>cs", desc = "Symbols (Trouble)" },
+				{ "<leader>cl", desc = "LSP References (Trouble)" },
+				{ "<leader>ch", desc = "Toggle Checkbox (Obsidian)" },
 				{ "<leader>rn", desc = "Rename Symbol" },
+				{ "<leader>k", desc = "Signature Help" },
+				{ "<leader>D", desc = "Type Definition" },
+				{ "<leader>w", group = "Workspace" },
 				{ "<leader>wa", desc = "Add Workspace Folder" },
 				{ "<leader>wr", desc = "Remove Workspace Folder" },
 				{ "<leader>wl", desc = "List Workspace Folders" },
 
-				-- Utilities
+				{ "<leader>x", group = "Diagnostics" },
+				{ "<leader>xx", desc = "Diagnostics (Trouble)" },
+				{ "<leader>xX", desc = "Buffer Diagnostics" },
+				{ "<leader>xL", desc = "Location List" },
+				{ "<leader>xQ", desc = "Quickfix List" },
+
+				{ "<leader>a", group = "AI (opencode)" },
+				{ "<leader>at", desc = "Toggle" },
+				{ "<leader>aa", desc = "Ask About This" },
+				{ "<leader>a+", desc = "Add Buffer/Selection" },
+				{ "<leader>ae", desc = "Explain This" },
+				{ "<leader>an", desc = "New Session" },
+				{ "<leader>as", desc = "Select Prompt" },
+
 				{ "<leader>u", group = "UI/Utils" },
 				{ "<leader>un", desc = "Dismiss Notifications" },
 				{ "<leader>us", desc = "Toggle Spelling" },
@@ -67,47 +84,51 @@ return {
 				{ "<leader>uT", desc = "Toggle Treesitter" },
 				{ "<leader>ub", desc = "Toggle Background" },
 				{ "<leader>uh", desc = "Toggle Inlay Hints" },
+				{ "<leader>ut", desc = "Toggle Undo Tree" },
 
-				-- Other
-				{ "<leader>z", desc = "Toggle Zen Mode" },
-				{ "<leader>qq", desc = "Quit" },
+				{ "<leader>o", group = "Obsidian" },
+				{ "<leader>on", desc = "Quick Switcher" },
+				{ "<leader>os", desc = "Search Notes" },
+				{ "<leader>od", desc = "Daily Note" },
+				{ "<leader>n", group = "Notes/Noice" },
+				{ "<leader>nn", desc = "Obsidian New Note" },
+				{ "<leader>nd", desc = "Dismiss Noice Messages" },
+				{ "<leader>mp", desc = "Markdown Preview" },
 
-				-- Buffer
 				{ "<leader>b", group = "Buffer" },
 				{ "<leader>bd", desc = "Delete Buffer" },
-				{ "<leader>nn", desc = "Obsidian New Note" },
-				{ "<leader>nd", desc = "Dismiss Noice" },
-				{ "<leader>N", desc = "Neovim News" },
-				{ "<leader>ch", desc = "Toggle Checkbox" },
 
-				-- Code screenshots
+				{ "<leader>z", desc = "Toggle Zen Mode" },
+				{ "<leader>qq", desc = "Quit" },
+				{ "<leader>h", desc = "Clear Search Highlight" },
+				{ "<leader>N", desc = "Neovim News" },
+
 				{ "<leader>cs", desc = "Code Screenshot", mode = "v" },
 				{ "<leader>css", desc = "Save Code Screenshot", mode = "v" },
 
-				-- Preview operations
 				{ "gp", group = "Preview" },
 				{ "gpd", desc = "Preview Definition" },
 				{ "gpr", desc = "Preview References" },
 				{ "gpi", desc = "Preview Implementation" },
 				{ "gP", desc = "Close All Previews" },
 
-				-- Todo navigation
+				{ "gs", group = "Surround", mode = { "n", "v" } },
+				{ "gsa", desc = "Add Surrounding", mode = { "n", "v" } },
+				{ "gsd", desc = "Delete Surrounding" },
+				{ "gsr", desc = "Replace Surrounding" },
+				{ "gsf", desc = "Find Surrounding (right)" },
+				{ "gsF", desc = "Find Surrounding (left)" },
+				{ "gsh", desc = "Highlight Surrounding" },
+
 				{ "]t", desc = "Next Todo" },
 				{ "[t", desc = "Previous Todo" },
 
-				-- LeetCode operations
 				{ "<leader>l", group = "LeetCode" },
 				{ "<leader>ll", desc = "LeetCode List" },
 				{ "<leader>lt", desc = "LeetCode Test" },
 				{ "<leader>ls", desc = "LeetCode Submit" },
 				{ "<leader>lr", desc = "LeetCode Run" },
 				{ "<leader>ld", desc = "LeetCode Description" },
-
-				-- Format
-				{ "<leader>cF", desc = "Format Buffer" },
-
-				-- Undo tree
-				{ "<leader>ut", desc = "Toggle Undo Tree" },
 			})
 		end,
 	},

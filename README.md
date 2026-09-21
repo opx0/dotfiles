@@ -5,8 +5,8 @@ Arch Linux. zsh + tmux + Neovim, symlinked with GNU stow.
 ## Setup
 
 ```sh
-git clone https://github.com/aura-zero/dotfiles.git ~/dotfiles
-cd ~/dotfiles && ./bootstrap.sh
+git clone https://github.com/opx0/dotfiles.git ~/dotfiles
+cd ~/dotfiles && ./install.sh
 ```
 
 That's the whole thing. It's safe to re-run — every step checks before it acts.
@@ -14,11 +14,11 @@ That's the whole thing. It's safe to re-run — every step checks before it acts
 If stow reports conflicts with config files already on the machine:
 
 ```sh
-./bootstrap.sh --adopt   # pulls those files INTO the repo — check `git diff` after
+./install.sh --adopt   # pulls those files INTO the repo — check `git diff` after
 ```
 
 <details>
-<summary>What bootstrap.sh does</summary>
+<summary>What install.sh does</summary>
 
 | Step | Detail |
 |---|---|
@@ -28,7 +28,7 @@ If stow reports conflicts with config files already on the machine:
 | Symlinks | `stow` into `$HOME` |
 | tmux | clones TPM, installs plugins headlessly (no `prefix + I` needed) |
 | zsh | clones zinit, bursts the turbo-loaded plugins |
-| Neovim | `lazy.nvim` self-bootstraps, then a headless `Lazy! sync` |
+| Neovim | `lazy.nvim` self-bootstraps, then a headless `Lazy! install` + `Lazy! restore` (reproduces the versions pinned in `lazy-lock.json` instead of updating them) |
 | Login shell | `chsh` to zsh |
 
 Flags: `--adopt`, `--skip-packages`, `--help`.
@@ -97,8 +97,10 @@ Full writeup, including why the config is generated rather than hand-written:
 | Path | |
 |---|---|
 | [`.config/nvim`](.config/nvim/README.md) | Neovim — plugins, LSP, [keybindings](.config/nvim/KEYBINDINGS.md) |
-| [`.config/tmux`](.config/tmux/README.md) | tmux — keybindings, themes, per-host overrides |
+| [`.config/tmux`](.config/tmux/README.md) | tmux — keybindings, plugins, inline catppuccin theme |
 | [`.config/zsh`](.config/zsh) | zsh modules, sourced by `.zshrc` |
+| [`.config/television`](.config/television/README.md) | context-aware fuzzy finder — `ctrl-t` |
+| [`.config/opencode`](.config/opencode/README.md) | opencode agents, skills, commands |
 | [`scripts`](scripts/README.md) | the package lists bootstrap reads |
 | `.config/voxtype` | push-to-talk speech-to-text — hold F8, speak, release |
 | `.config/starship` | prompt |
@@ -108,8 +110,6 @@ Those READMEs are reference — how things are configured and which keys do what
 
 ## Housekeeping
 
-Symlinks created by stow shouldn't be committed:
-
-```zsh
-find . -type l -exec git rm --cached {} \;
-```
+stow creates its symlinks in `$HOME`, not in here, so nothing it does needs
+untracking. The only symlinks inside this repo live under
+`.config/tmux/plugins/`, which is gitignored.

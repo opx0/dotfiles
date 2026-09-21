@@ -19,6 +19,8 @@ source "${ZINIT_HOME}/zinit.zsh"
 # Deferred via Turbo mode (wait'0' lucid): loaded ~50ms after first prompt
 zinit wait'0' lucid for \
     zsh-users/zsh-completions \
+    atload'bindkey "^[e" autosuggest-execute;
+           bindkey "^[m" autosuggest-toggle' \
     zsh-users/zsh-autosuggestions \
     zsh-hooks/zsh-hooks \
     OMZP::sudo \
@@ -27,7 +29,7 @@ zinit wait'0' lucid for \
     OMZP::docker
 
 # Syntax highlighting must load late (after other widgets) — fast-syntax-highlighting variant is faster
-zinit wait'0' lucid atinit'zicompinit; zicdreplay' light-mode for \
+zinit wait'0' lucid atinit'zicdreplay' light-mode for \
     zsh-users/zsh-syntax-highlighting
 
 # --- 3. Completion Initialization ---
@@ -72,6 +74,9 @@ bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 bindkey '^[w' kill-region
 
+bindkey -M viins 'jj' vi-cmd-mode
+bindkey -M viins 'jk' vi-cmd-mode
+
 # --- 6. Functions ---
 mkcd() { mkdir -p "$1" && cd "$1"; }
 cx() { cd "$@" && l; }
@@ -87,14 +92,24 @@ function __xan {
 }
 
 # --- 7. Integrations & Env ---
-export PATH="$HOME/.local/bin:$PATH"
-export TERM=xterm-256color
+export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
+# Deliberately no `export TERM` here, and there must not be one. Every terminal
+# that starts this shell already sets it; forcing a value breaks capability
+# detection both ways -- inside tmux it clobbers tmux's own tmux-256color, and
+# outside it discards ghostty's xterm-ghostty (both terminfos are installed).
+# tmux declares truecolor itself via terminal-features; see .config/tmux.
+# ssh'ing somewhere that lacks the terminfo? Install it there, don't lie here:
+#   infocmp xterm-ghostty | ssh HOST 'tic -x -'
 export LANG=en_US.UTF-8
 export GPG_TTY=$(tty)
 
 # Custom Tools
 [ -f ~/.gemKeys ] && source ~/.gemKeys
-export PATH="$PATH:$HOME/.lmstudio/bin"
+
+# fzf: use fd for the default source -- respects .gitignore, follows symlinks,
+# includes dotfiles, and is much faster than the built-in find walk.
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # Shell Integrations (deferred — load after first prompt)
 export CARAPACE_BRIDGES='zsh,fish,bash,inshellisense'
@@ -109,6 +124,12 @@ zinit wait'0b' lucid as'null' id-as'atuin-init' \
 zinit wait'0b' lucid as'null' id-as'carapace-init' \
     atload'source <(carapace _carapace)' for zdharma-continuum/null
 
+zinit wait'0c' lucid as'null' id-as'television-init' \
+    atload'eval "$(tv init zsh)"' for zdharma-continuum/null
+
+zinit wait'0c' lucid as'null' id-as'direnv-init' \
+    atload'eval "$(direnv hook zsh)"' for zdharma-continuum/null
+
 # --- 8. Modular Config Loader ---
 # Loads everything from ~/.config/zsh/*.zsh (aliases, exports, etc.)
 for conf in ~/.config/zsh/*.zsh; do
@@ -117,7 +138,7 @@ done
 unset conf
 # GOPATH default ($HOME/go) — avoid subprocess call on every shell start
 export PATH="$PATH:$HOME/go/bin"
-export PATH="$PATH:$HOME/Projects/dev-cli"
+# export PATH="$PATH:$HOME/Projects/dev-cli"
 
 eval "$(starship init zsh)"
 export PATH="/home/opx/.config/herd-lite/bin:$PATH"
@@ -127,11 +148,4 @@ export PHP_INI_SCAN_DIR="/home/opx/.config/herd-lite/bin:$PHP_INI_SCAN_DIR"
 export PATH="$PATH:/home/opx/.lmstudio/bin"
 # End of LM Studio CLI section
 
-zinit wait'1' lucid as'null' id-as'dev-cli-init' \
-    atload'eval "$(dev-cli init zsh)"' for zdharma-continuum/null
-export JAVA_HOME=/usr/lib/jvm/default
-export PATH="$JAVA_HOME/bin:$PATH"
 export PATH="$HOME/.npm-global/bin:$PATH"
-
-# Added by Antigravity CLI installer
-export PATH="/home/opx/.local/bin:$PATH"

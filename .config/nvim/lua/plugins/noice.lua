@@ -4,7 +4,6 @@ return {
     event = "VeryLazy",
     dependencies = {
       "MunifTanjim/nui.nvim",
-      "rcarriga/nvim-notify",
     },
     config = function()
       -- Responsive sizing -----------------------------------------------------
@@ -31,6 +30,7 @@ return {
       end
 
       require("noice").setup({
+        notify = { enabled = false },
         lsp = {
           override = {
             ["vim.lsp.util.convert_input_to_markdown_lines"] = true,

@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 # One-shot setup for these dotfiles on Arch Linux.
 #
-#   ./bootstrap.sh              full setup
-#   ./bootstrap.sh --adopt      let stow adopt pre-existing config files
-#   ./bootstrap.sh --skip-packages
+#   ./install.sh              full setup
+#   ./install.sh --adopt      let stow adopt pre-existing config files
+#   ./install.sh --skip-packages
 #
 # Safe to re-run: every step checks before it acts.
 
@@ -103,7 +103,7 @@ if stow "${stow_args[@]}" . ; then
   ok "config symlinked into \$HOME"
 else
   die "stow hit conflicting files. Either move them aside, or re-run:
-       ./bootstrap.sh --adopt
+       ./install.sh --adopt
      (--adopt pulls the existing files INTO this repo — check 'git diff' afterwards)"
 fi
 
@@ -121,9 +121,9 @@ if command -v tmux >/dev/null; then
   fi
 
   tmux_ver="$(tmux -V | sed 's/tmux //; s/[a-z]//g')"
-  awk -v v="$tmux_ver" 'BEGIN { exit !(v+0 >= 3.2) }' \
-    && ok "tmux $tmux_ver (catppuccin v2 needs >= 3.2)" \
-    || warn "tmux $tmux_ver is below 3.2 — the catppuccin theme will misbehave"
+  awk -v v="$tmux_ver" 'BEGIN { exit !(v+0 >= 3.0) }' \
+    && ok "tmux $tmux_ver (catppuccin fork needs >= 3.0)" \
+    || warn "tmux $tmux_ver is below 3.0 — the catppuccin theme will misbehave"
 
   # TPM treats any existing directory as an installed plugin, so empty stubs
   # (left by a half-finished checkout) would be silently skipped forever.
@@ -134,6 +134,20 @@ if command -v tmux >/dev/null; then
   "$TPM_DIR/bin/install_plugins" >/dev/null && ok "tmux plugins installed" \
     || warn "TPM install failed — run 'prefix + I' inside tmux"
   tmux kill-session -t bootstrap-tpm 2>/dev/null || true
+
+  thumbs_dir="$HOME/.config/tmux/plugins/tmux-thumbs"
+  if [ -d "$thumbs_dir" ]; then
+    if [ -x "$thumbs_dir/target/release/thumbs" ]; then
+      ok "tmux-thumbs already built"
+    elif command -v cargo >/dev/null; then
+      echo "  compiling tmux-thumbs (Rust, takes a minute)…"
+      (cd "$thumbs_dir" && cargo build --release >/dev/null 2>&1) \
+        && ok "tmux-thumbs built" \
+        || warn "tmux-thumbs build failed — 'prefix + g' will do nothing"
+    else
+      warn "cargo missing — tmux-thumbs not built ('prefix + g' will do nothing)"
+    fi
+  fi
 else
   warn "tmux not installed — skipping plugins"
 fi

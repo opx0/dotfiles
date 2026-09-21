@@ -1,6 +1,3 @@
-# Stow-related files
-.stow-local-ignore
-
 # System files
 .DS_Store
 .DS_Store?
@@ -57,7 +54,6 @@ local/
 .config/tmux/plugins/
 
 # Neovim plugins and generated files
-.config/nvim/lazy-lock.json
 .config/nvim/plugin/packer_compiled.lua
 .config/nvim/.lazy/
 .config/nvim/lazy/
@@ -111,14 +107,14 @@ node_modules/
 .npm/
 .yarn/
 
-# Atuin (as mentioned in stow-local-ignore)
-.config/atuin/
+.config/atuin/history.db
+.config/atuin/key
+.config/atuin/session
 
 # Any local scripts or tools
 scripts/local/
 bin/local/
 
-# Hyprland (as mentioned in stow-local-ignore)
 .config/hyprland/
 
 # Any files ending with .local (for local overrides)
@@ -135,3 +131,5 @@ bin/local/
 # voxtype rewrites config.toml on `voxtype configure`; keep its backups out.
 .config/voxtype/config.toml.bak.*
 .config/voxtype/config.toml.*-minimal
+
+temp/

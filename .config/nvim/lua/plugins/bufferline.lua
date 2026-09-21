@@ -5,9 +5,6 @@ return {
     event = "VeryLazy",
     dependencies = { "echasnovski/mini.icons" },
     config = function()
-      -- Bufferline wants the nvim-web-devicons API; mini.icons can provide it.
-      require("mini.icons").mock_nvim_web_devicons()
-
       require("bufferline").setup({
         options = {
           mode = "buffers",

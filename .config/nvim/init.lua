@@ -15,8 +15,6 @@ if not vim.uv.fs_stat(lazypath) then
 	})
 end
 
-local autocmd = vim.api.nvim_create_autocmd
-
 vim.api.nvim_create_autocmd({ "BufEnter", "BufNewFile" }, {
 	pattern = { "*.templ" },
 	callback = function()
@@ -104,6 +102,16 @@ vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = tr
 
 -- Quick close split
 vim.keymap.set("n", "<leader>qq", ":q<CR>", {silent = true, noremap = true})
+
+local zoomed = false
+vim.keymap.set("n", "<C-w>z", function()
+	if zoomed then
+		vim.cmd("wincmd =")
+	else
+		vim.cmd("wincmd _ | wincmd |")
+	end
+	zoomed = not zoomed
+end, { desc = "Toggle window zoom" })
 
 -- add binaries installed by mason.nvim to path
 local is_windows = vim.uv.os_uname().sysname == "Windows_NT"

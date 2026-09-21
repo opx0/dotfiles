@@ -7,7 +7,6 @@ alias la='tree'
 #dev
 alias bund="bun run dev"
 alias bunrnd="bun run dev"
-alias code="code-insiders"
 
 # System
 alias fuckoff="shutdown now"
@@ -43,6 +42,7 @@ alias gre='git reset'
 # Eza
 alias l="eza -l --icons --git -a"
 alias lt="eza --tree --level=2 --long --icons --git"
+alias ltree="eza --tree --level=2 --icons --git"
 
 #clip
 alias xpwd="pwd | xclip -selection clipboard" # for x11
@@ -61,10 +61,11 @@ alias aj21p='magick *.jpg output.pdf'  # all jpg to pdf
 #zed-cli
 alias zed="zeditor"
 
-# MemPalace — see ~/.local/share/mempalace/mp wrapper
-alias mps='mp search'                                    # mps "query" [--wing X] [--hall Y]
-alias mph='mp stats'                                     # health check (row count + breakdown)
-alias mpd='mp doctor'                                    # verify install
-mpr() {  # full refresh: pull new transcripts, write markdown, rebuild graph hubs
-  mp ingest && mp export && python3 ~/.local/share/mempalace/build-mem-index.py
-}
+if command -v mp >/dev/null 2>&1; then
+  alias mps='mp search'
+  alias mph='mp stats'
+  alias mpd='mp doctor'
+  mpr() {
+    mp ingest && mp export && python3 ~/.local/share/mempalace/build-mem-index.py
+  }
+fi

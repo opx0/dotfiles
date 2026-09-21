@@ -1,6 +1,8 @@
 return {
   {
     "mfussenegger/nvim-dap",
+    keys = { { "<leader>d", desc = "+Debug" } },
+    cmd = { "DapContinue", "DapToggleBreakpoint", "DapNew", "DapSetLogLevel" },
     dependencies = {
       "williamboman/mason.nvim",
       "jay-babu/mason-nvim-dap.nvim",
@@ -18,7 +20,10 @@ return {
           "codelldb",
           "python",
           "delve",
-          "node2",
+          -- "node2" was removed from the mason registry; js-debug-adapter is
+          -- its replacement. mason-nvim-dap installs it but ships no adapter
+          -- definition for it, so `pwa-node` is wired up by hand below.
+          "js",
           "php",
         },
         automatic_installation = true,
@@ -169,10 +174,20 @@ return {
       dap.configurations.cpp = cpp_like
       dap.configurations.rust = cpp_like
 
+      dap.adapters["pwa-node"] = {
+        type = "server",
+        host = "127.0.0.1",
+        port = "${port}",
+        executable = {
+          command = vim.fn.stdpath("data") .. "/mason/bin/js-debug-adapter",
+          args = { "${port}" },
+        },
+      }
+
       local node_like = {
         {
-          name = "Launch current file (node2)",
-          type = "node2",
+          name = "Launch current file (js-debug)",
+          type = "pwa-node",
           request = "launch",
           program = "${file}",
           cwd = "${workspaceFolder}",
@@ -182,7 +197,7 @@ return {
         },
         {
           name = "Attach to process (node --inspect)",
-          type = "node2",
+          type = "pwa-node",
           request = "attach",
           processId = require("dap.utils").pick_process,
           cwd = "${workspaceFolder}",

@@ -4,7 +4,10 @@ return {
 		name = "catppuccin",
 		priority = 1000,
 		config = function()
-			require("catppuccin").setup({
+			-- Kept in a local so the TT toggle can flip one field and re-apply
+			-- the *whole* table -- calling setup() with a partial one resets
+			-- every other option to its default.
+			local opts = {
 				flavour = "mocha", -- latte, frappe, macchiato, mocha
 				background = { -- :h background
 					light = "latte",
@@ -49,44 +52,19 @@ return {
 					noice = true,
 					which_key = true,
 				},
-			})
+			}
 
-			vim.cmd.colorscheme("catppuccin-nvim")
+			require("catppuccin").setup(opts)
+			vim.cmd.colorscheme("catppuccin")
 
-			-- Transparency toggle
-			vim.keymap.set("n", "TT", ":TransparentToggle<CR>", {
-				noremap = true,
-				desc = "Toggle transparency"
-			})
+			vim.keymap.set("n", "TT", function()
+				opts.transparent_background = not opts.transparent_background
+				require("catppuccin").setup(opts)
+				vim.cmd.colorscheme("catppuccin")
+			end, { desc = "Toggle transparency" })
 		end,
 	},
 
-	-- Transparency plugin
-	{
-		"xiyaowong/transparent.nvim",
-		config = function()
-			require("transparent").setup({
-				groups = {
-					'Normal', 'NormalNC', 'Comment', 'Constant', 'Special', 'Identifier',
-					'Statement', 'PreProc', 'Type', 'Underlined', 'Todo', 'String', 'Function',
-					'Conditional', 'Repeat', 'Operator', 'Structure', 'LineNr', 'Tree',
-					'NonText', 'SignColumn', 'CursorLineNr', 'EndOfBuffer',
-				},
-				extra_groups = {},
-				exclude_groups = {},
-			})
-		end
-	},
-
-	-- Alternative colorschemes
-	{
-		"folke/tokyonight.nvim",
-		name = "tokyonight",
-		priority = 900,
-	},
-	{
-		"rose-pine/neovim",
-		name = "rose-pine",
-		priority = 900,
-	},
+	{ "folke/tokyonight.nvim", name = "tokyonight", lazy = true },
+	{ "rose-pine/neovim", name = "rose-pine", lazy = true },
 }
